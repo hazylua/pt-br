@@ -2,17 +2,16 @@
 
 int Liquido::calorias_pp (const int &porcoes)
 {
-	cout << "Calorias totais: " << porcoes * getQtdCalorica () << endl;
+	int total = porcoes * getQtdCalorica ();
+	return total;
 }
 
-//set().
 void Liquido::setViscosidade (const int &viscosidade)
 {
 	this->viscosidade = viscosidade;
 }
 
-//get().
-void Liquido::getViscosidade ()
+int Liquido::getViscosidade ()
 {
 	return viscosidade;
 }

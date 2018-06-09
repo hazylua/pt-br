@@ -8,7 +8,6 @@ class Fruta : public Comida
 	private:
 		string validade;
 	public:
-		//Métoo
 		int calorias_pp (const int &);
 
 		void setValidade (const string &);
@@ -16,4 +15,4 @@ class Fruta : public Comida
 		string getValidade ();
 };
 
-#endif;
+#endif

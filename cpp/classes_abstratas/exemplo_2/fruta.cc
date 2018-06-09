@@ -2,17 +2,16 @@
 
 int Fruta::calorias_pp (const int &porcoes)
 {
-	cout << "Calorias totais: " << porcoes * getQtdCalorica () << endl;
+	int total = porcoes * getQtdCalorica ();
+	return total;
 }
 
-//set().
-void Fruta::setValidade (const int &validade)
+void Fruta::setValidade (const string &validade)
 {
 	this->validade = validade;
 }
 
-//get().
-void Fruta::getValidade ()
+string Fruta::getValidade ()
 {
 	return validade;
 }
