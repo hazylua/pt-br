@@ -1,6 +1,6 @@
 #include "veiculo.h"
 
-int ano_atual = 2014;
+int ano = 2014;
 
 void Veiculo::setNomeDono (const string &nome_dono)
 {
@@ -38,6 +38,5 @@ int Veiculo::getValorAquisicao ()
 
 int Veiculo::getIdadeVeiculo ()
 {
-	return ano_atual - ano_fabricacao;
+	return ano - ano_fabricacao;
 }
-

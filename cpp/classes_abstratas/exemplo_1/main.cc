@@ -4,7 +4,7 @@
 //Possui um método abstrato: valor de venda.
 //A classe abstrata de veículo possui outras duas classes filhas não-abstratas, uma encapsulando uma bicicleta e outra encapsulando um veículo motorizado.
 //Uma bicicleta sofre uma desvalorização de 15% por ano em seu valor de venda.
-//Um veículo motorizado tem os seguintes atributos adicionais: um atributo cilindrada, em litros, e um método que retorna a média de cavalo-vapor (litros vezes o número de rodas). Um veículo motorizado sofre uma desvalorização de 8% por ano em seu valor de venda. 
+//Um veículo motorizado tem os seguintes atributos adicionais: um atributo cilindrada, em litros, e um método que retorna a média de cavalo-vapor (litros vezes o número de rodas). Um veículo motorizado sofre uma desvalorização de 8% por ano em seu valor de venda.
 
 #include "veiculo.h"
 #include "bicicleta.h"
@@ -47,5 +47,4 @@ void definir_motorizado (Motorizado *m)
 	m->setValorAquisicao (2000);
 
 	m->setCilindradas (999);
-
 }
