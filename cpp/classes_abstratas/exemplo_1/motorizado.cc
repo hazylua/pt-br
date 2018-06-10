@@ -2,7 +2,7 @@
 
 void Motorizado::valor_de_venda ()
 {
-	cout << "Valor de venda: " << getValorAquisicao () - ((getIdadeVeiculo () * 0.08) * getValorAquisicao ())<< endl;
+	cout << "Valor de venda: " << getValorAquisicao () - ((getIdadeVeiculo () * 0.08) * getValorAquisicao ()) << endl;
 }
 
 void Motorizado::setCilindradas (const int &cilindradas)
