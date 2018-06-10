@@ -36,6 +36,17 @@ void adicionar_inicio (LISTA **l, ALUNO aluno)
 
 void listar_elementos (LISTA **l)
 {
-    printf ("%d\n", (*l)->dados.num_id);
+
+    LISTA *temp = (LISTA *) malloc (sizeof (LISTA));
+    LISTA *li = *l;
+    int i = 1;
+    while (li != NULL)
+    {
+        printf ("*** Elemento #%d ***\n", i);
+        printf ("Número de ID: %d\n", li->dados.num_id);
+        printf ("Número de matrícula: %d\n", li->dados.matricula);
+        li = li->prox;
+        i++;
+    }
 }
 
