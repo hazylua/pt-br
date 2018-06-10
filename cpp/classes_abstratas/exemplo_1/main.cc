@@ -23,6 +23,8 @@ int main ()
 	m->valor_de_venda ();
 	m->getMediaCavaloVapor ();
 
+	delete (b);
+	delete (m);
 	return 0;
 }
 
