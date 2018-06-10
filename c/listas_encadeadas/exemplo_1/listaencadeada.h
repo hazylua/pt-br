@@ -21,5 +21,8 @@ void liberar_lista (LISTA **);
 
 void verificar_lista (LISTA **);
 
+void adicionar_inicio (LISTA **, ALUNO);
+
+void listar_elementos (LISTA **);
 
 #endif
