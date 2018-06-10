@@ -1,50 +1,29 @@
 #include "listaencadeada.h"
 
-void verificar_erro (LISTA **l)
+LISTA **inicializar_lista ()
 {
-    printf ("Teste.\n");
-
-    // if (l == NULL)
-        // printf ("Erro.");
-        // EXIT_FAILURE;
-}
-
-void inicializar_lista (LISTA **l)
-{
-    l = (LISTA **) malloc (sizeof (LISTA *));
+    LISTA **l = (LISTA **) malloc (sizeof (LISTA *));
+    if (*l != NULL)
+        *l = NULL; //Coloca lista como vazia.
+    return l;
 }
 void liberar_lista (LISTA **l)
 {
-    verificar_erro (l);
-
-    if (*l != NULL)
-        free (l);
+    LISTA *temp;
+    while (*l != NULL)
+    {
+        temp = *l;
+        *l = (*l)->prox;
+        free (temp);
+    }
 }
+
 
 void verificar_lista (LISTA **l)
 {
-    verificar_erro (l);
-
     if (*l == NULL)
         printf ("Lista vazia.\n");
     else
         printf ("Lista não-vazia.\n");
 }
 
-void adicionar_inicio (LISTA **l)
-{
-    LISTA *novo = (LISTA *) malloc (sizeof (LISTA *));
-    novo->dados.num_id = 1;
-    novo->dados.matricula = 10000;
-    novo->prox = *l;
-    *l = novo;
-}
-
-void listar_elementos (LISTA *l)
-{
-    while (l->prox != NULL)
-    {
-        printf ("%d - Núm. ID: %d", 0, l->dados.num_id);
-        printf ("%d - Matricula: %d", 0, l->dados.matricula);
-    }
-}

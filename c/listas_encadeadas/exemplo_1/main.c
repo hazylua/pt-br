@@ -1,18 +1,10 @@
-//Estou entendendo (será?).
-
 #include "listaencadeada.h"
 
 int main ()
 {
     LISTA **l;
-
-    inicializar_lista (l);
+    l = inicializar_lista (); //Não é possível (?) passar por referência.
     verificar_lista (l);
 
-    listar_elementos (l);
-
-    liberar_lista (l);
-    free (l);
-    
     return 0;
 }

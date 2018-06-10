@@ -12,19 +12,14 @@ typedef struct aluno
 
 typedef struct lista
 {
-    struct lista *prox;
     ALUNO dados;
+    struct lista *prox;
 } LISTA;
 
-void verificar_erro (LISTA **);
-
-void inicializar_lista (LISTA **);
+LISTA **inicializar_lista ();
 void liberar_lista (LISTA **);
 
 void verificar_lista (LISTA **);
 
-void adicionar_inicio (LISTA **);
-
-void listar_elementos (LISTA *);
 
 #endif
