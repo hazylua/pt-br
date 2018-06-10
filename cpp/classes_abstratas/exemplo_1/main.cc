@@ -25,6 +25,7 @@ int main ()
 
 	delete (b);
 	delete (m);
+	
 	return 0;
 }
 
