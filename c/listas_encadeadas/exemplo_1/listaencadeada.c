@@ -2,5 +2,6 @@
 
 void inicializar_lista (LISTA **l)
 {
-    *l = (LISTA *) malloc (sizeof (LISTA));
+    printf ("Viadão.\n");
+    *l = malloc (sizeof (LISTA));
 }

@@ -4,7 +4,7 @@
 
 int main ()
 {
-    LISTA **l = NULL;
+    LISTA **l;
 
     inicializar_lista (l);
     
