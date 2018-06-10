@@ -16,6 +16,15 @@ typedef struct lista
     ALUNO dados;
 } LISTA;
 
+void verificar_erro (LISTA **);
+
 void inicializar_lista (LISTA **);
+void liberar_lista (LISTA **);
+
+void verificar_lista (LISTA **);
+
+void adicionar_inicio (LISTA **);
+
+void listar_elementos (LISTA *);
 
 #endif
