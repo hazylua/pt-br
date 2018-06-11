@@ -33,20 +33,45 @@ void adicionar_inicio (LISTA **l, ALUNO aluno)
     novo->prox = *l;
     *l = novo;
 }
+void adicionar_final (LISTA **l, ALUNO aluno)
+{
+    LISTA *novo = (LISTA *) malloc (sizeof (LISTA));
+    novo->dados = aluno;
+    novo->prox = NULL;
+    
+    if ((*l)->prox == NULL)
+        (*l)->prox = novo;
+
+    else
+    {
+        LISTA *atual = *l;
+        while (true)
+        {
+            if (atual->prox == NULL);
+            {
+                atual->prox = novo;
+                break;
+            }
+            atual = atual->prox;
+        }
+    }
+}
 
 void listar_elementos (LISTA **l)
 {
-
-    LISTA *temp = (LISTA *) malloc (sizeof (LISTA));
-    LISTA *li = *l;
     int i = 1;
-    while (li != NULL)
+
+    printf ("\n### Listando elementos ###\n\n");
+    while (l != NULL)
     {
         printf ("*** Elemento #%d ***\n", i);
-        printf ("Número de ID: %d\n", li->dados.num_id);
-        printf ("Número de matrícula: %d\n", li->dados.matricula);
-        li = li->prox;
+        printf ("Número de ID: %d\n", (*l)->dados.num_id);
+        printf ("Número de matrícula: %d\n", (*l)->dados.matricula);
+        printf ("Endereço atual: %p\n", (*l));
+        printf ("Endereço do próximo: %p\n\n", (*l)->prox);
+        (*l) = (*l)->prox;
         i++;
     }
+    printf ("\n### Fim do listamento ###\n\n");
 }
 

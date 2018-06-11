@@ -1,6 +1,3 @@
 {
-    "files.associations": {
-        "listaencadeada.h": "c",
-        "stdlib.h": "c"
-    }
+    "editor.minimap.enabled": false
 }

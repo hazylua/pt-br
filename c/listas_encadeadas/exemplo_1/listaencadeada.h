@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct aluno
 {
@@ -22,6 +23,7 @@ void liberar_lista (LISTA **);
 void verificar_lista (LISTA **);
 
 void adicionar_inicio (LISTA **, ALUNO);
+void adicionar_final (LISTA **, ALUNO);
 
 void listar_elementos (LISTA **);
 
