@@ -47,7 +47,7 @@ void adicionar_final (LISTA **l, ALUNO aluno)
         LISTA *atual = *l;
         while (true)
         {
-            if (atual->prox == NULL);
+            if (atual->prox == NULL)
             {
                 atual->prox = novo;
                 break;
@@ -62,7 +62,8 @@ void listar_elementos (LISTA **l)
     int i = 1;
 
     printf ("\n### Listando elementos ###\n\n");
-    while (l != NULL)
+    
+    while ((*l) != NULL)
     {
         printf ("*** Elemento #%d ***\n", i);
         printf ("Número de ID: %d\n", (*l)->dados.num_id);

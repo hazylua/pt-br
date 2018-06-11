@@ -11,7 +11,6 @@ int main ()
     LISTA **l; //Lista declarada como ponteiro duplo permite passar a cabeça da lista por referência.
     l = inicializar_lista (); //Não é possível (?) passar por referência.
 
-    listar_elementos (l);
     adicionar_inicio (l, criar_aluno ());
     adicionar_inicio (l, criar_aluno ());
     adicionar_inicio (l, criar_aluno ());
