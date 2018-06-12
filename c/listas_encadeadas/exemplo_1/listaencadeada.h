@@ -28,7 +28,6 @@ int verificar_tamanho (LISTA **);
 void adicionar_inicio (LISTA **, ALUNO);
 void adicionar_final (LISTA **, ALUNO);
 void adicionar_ppos (LISTA **, ALUNO, int);
-
-
+void adicionar_pordem (LISTA **, ALUNO);
 
 #endif

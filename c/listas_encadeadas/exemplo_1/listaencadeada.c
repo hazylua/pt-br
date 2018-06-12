@@ -96,9 +96,9 @@ void adicionar_ppos (LISTA **l, ALUNO aluno, int pos)
     else
     {
         LISTA *novo = (LISTA *) malloc (sizeof (LISTA));
-        LISTA *temp = (LISTA *) malloc (sizeof (LISTA));
         novo->dados = aluno;
         
+        LISTA *temp = (LISTA *) malloc (sizeof (LISTA));
         LISTA *atual = *l;
         int i;
         for (i = 1; i <= pos-2; i++)
@@ -108,8 +108,19 @@ void adicionar_ppos (LISTA **l, ALUNO aluno, int pos)
         novo->prox = temp;
     }
 }
-
+//Adiciona um novo elemento de acordo com o número de ID.
 void adicionar_pordem (LISTA **l, ALUNO aluno)
 {
-    
+    LISTA *novo = (LISTA *) malloc (sizeof (LISTA));
+    novo->dados = aluno;
+    LISTA *temp = (*l)->prox;
+    LISTA *ant = (*l);
+    while (temp != NULL && temp->dados.num_id > novo->dados.num_id)
+    {
+        printf ("lista\n");
+        ant = temp;
+        temp = temp->prox;
+    }
+    novo->prox = temp;
+    ant->prox = novo;
 }

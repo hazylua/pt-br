@@ -16,6 +16,7 @@ int main ()
     adicionar_inicio (l, criar_aluno ());
     adicionar_final (l, criar_aluno ());
     adicionar_ppos (l, criar_especifico (), 1);
+    adicionar_pordem (l, criar_especifico ());
     
     printf ("Tamanho da lista: %d elementos.\n", verificar_tamanho (l));
     listar_elementos (l);
@@ -35,7 +36,7 @@ ALUNO criar_aluno ()
 ALUNO criar_especifico ()
 {
     ALUNO aluno;
-    aluno.num_id = 123;
+    aluno.num_id = 12;
     aluno.matricula = 12345;
     return aluno;
 }
