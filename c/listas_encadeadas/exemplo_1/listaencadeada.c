@@ -117,10 +117,17 @@ void adicionar_pordem (LISTA **l, ALUNO aluno)
     LISTA *ant = (*l);
     while (temp != NULL && temp->dados.num_id > novo->dados.num_id)
     {
-        printf ("lista\n");
         ant = temp;
         temp = temp->prox;
     }
     novo->prox = temp;
     ant->prox = novo;
+}
+
+void remover_inicio (LISTA **l)
+{
+    LISTA *temp = *l;
+    temp = temp->prox;
+    free (l);
+    *l = temp;
 }

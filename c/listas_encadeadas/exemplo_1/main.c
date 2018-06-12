@@ -5,6 +5,7 @@ int cont_mat = 10000;
 
 ALUNO criar_aluno ();
 ALUNO criar_especifico ();
+void verificar (LISTA **);
 
 int main ()
 {
@@ -14,12 +15,13 @@ int main ()
     adicionar_inicio (l, criar_aluno ());
     adicionar_inicio (l, criar_aluno ());
     adicionar_inicio (l, criar_aluno ());
-    adicionar_final (l, criar_aluno ());
-    adicionar_ppos (l, criar_especifico (), 1);
-    adicionar_pordem (l, criar_especifico ());
-    
-    printf ("Tamanho da lista: %d elementos.\n", verificar_tamanho (l));
-    listar_elementos (l);
+    //adicionar_final (l, criar_aluno ());
+    //adicionar_ppos (l, criar_especifico (), 1);
+    //adicionar_pordem (l, criar_especifico ());
+    verificar (l);
+
+    remover_inicio (l);
+    verificar (l);
 
     return 0;
 }
@@ -39,4 +41,9 @@ ALUNO criar_especifico ()
     aluno.num_id = 12;
     aluno.matricula = 12345;
     return aluno;
+}
+void verificar (LISTA **l)
+{
+    printf ("> Tamanho da lista: %d elementos.\n", verificar_tamanho (l));
+    listar_elementos (l);
 }
