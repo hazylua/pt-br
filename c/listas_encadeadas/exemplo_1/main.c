@@ -21,7 +21,8 @@ int main ()
     verificar (l);
 
     //remover_inicio (l);
-    remover_final (l);
+    //remover_final (l);
+    
     verificar (l);
 
     return 0;

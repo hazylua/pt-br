@@ -136,12 +136,19 @@ void remover_final (LISTA **l)
 {
     LISTA *temp = *l;
     LISTA *prox = (*l)->prox;
-    while (prox->prox != NULL)
+    if (verificar_tamanho (l) == 1)
     {
-        printf ("tnum_id: %d\n", temp->dados.num_id);
-        temp = temp->prox;
-        prox = prox->prox;
+        remover_inicio (l);
     }
-    free (temp->prox);
-    temp->prox = NULL;
+    else
+    {
+        while (prox->prox != NULL)
+        {
+            printf ("tnum_id: %d\n", temp->dados.num_id);
+            temp = temp->prox;
+            prox = prox->prox;
+        }
+        free (temp->prox);
+        temp->prox = NULL;
+    }
 }
