@@ -23,7 +23,7 @@ void liberar_lista (LISTA **);
 void listar_elementos (LISTA **);
 
 void verificar_lista (LISTA **);
-void verificar_tamanho (LISTA **);
+int verificar_tamanho (LISTA **);
 
 void adicionar_inicio (LISTA **, ALUNO);
 void adicionar_final (LISTA **, ALUNO);

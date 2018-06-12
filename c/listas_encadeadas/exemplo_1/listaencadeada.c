@@ -44,7 +44,7 @@ void verificar_lista (LISTA **l)
     else
         printf ("Lista não-vazia.\n");
 }
-void verificar_tamanho (LISTA **l)
+int verificar_tamanho (LISTA **l)
 {
     int tam = 0;
     LISTA *atual = *l;
@@ -53,7 +53,7 @@ void verificar_tamanho (LISTA **l)
         tam++;
         atual = atual->prox;
     }
-    printf ("Tamanho da lista: %d elementos.\n", tam);
+    return tam;
 }
 
 void adicionar_inicio (LISTA **l, ALUNO aluno)
@@ -86,18 +86,30 @@ void adicionar_final (LISTA **l, ALUNO aluno)
         }
     }
 }
+//Não substitui a utilidade das funções adicionar_inicio() e adicionar_final().
 void adicionar_ppos (LISTA **l, ALUNO aluno, int pos)
 {
-    LISTA *novo = (LISTA *) malloc (sizeof (LISTA));
-    LISTA *temp = (LISTA *) malloc (sizeof (LISTA));
-    novo->dados = aluno;
+    if (pos > verificar_tamanho (l) || pos < 0)
+        printf ("Erro: posição inválida.\n");
+    else if (pos == 1)
+        adicionar_inicio (l, aluno);
+    else
+    {
+        LISTA *novo = (LISTA *) malloc (sizeof (LISTA));
+        LISTA *temp = (LISTA *) malloc (sizeof (LISTA));
+        novo->dados = aluno;
+        
+        LISTA *atual = *l;
+        int i;
+        for (i = 1; i <= pos-2; i++)
+            atual = atual->prox;
+        temp = atual->prox;
+        atual->prox = novo;
+        novo->prox = temp;
+    }
+}
+
+void adicionar_pordem (LISTA **l, ALUNO aluno)
+{
     
-    LISTA *atual = *l;
-    int i;
-    //Para no elemento 2, insere "novo" em "atual->prox", tornando-o o terceiro elemento. Para continuar a lista, "novo" deve estar ligado ao quarto elemento, que é feito por meio de "novo->prox = temp".
-    for (i = 1; i <= pos-1; i++)
-        atual = atual->prox;
-    temp = atual->prox;
-    atual->prox = novo;
-    novo->prox = temp;         
 }

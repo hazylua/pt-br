@@ -15,9 +15,9 @@ int main ()
     adicionar_inicio (l, criar_aluno ());
     adicionar_inicio (l, criar_aluno ());
     adicionar_final (l, criar_aluno ());
-    adicionar_ppos (l, criar_especifico (), 3);
+    adicionar_ppos (l, criar_especifico (), 1);
     
-    verificar_tamanho (l);
+    printf ("Tamanho da lista: %d elementos.\n", verificar_tamanho (l));
     listar_elementos (l);
 
     return 0;
