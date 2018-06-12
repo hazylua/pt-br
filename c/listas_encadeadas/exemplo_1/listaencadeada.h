@@ -20,11 +20,15 @@ typedef struct lista
 LISTA **inicializar_lista ();
 void liberar_lista (LISTA **);
 
+void listar_elementos (LISTA **);
+
 void verificar_lista (LISTA **);
+void verificar_tamanho (LISTA **);
 
 void adicionar_inicio (LISTA **, ALUNO);
 void adicionar_final (LISTA **, ALUNO);
+void adicionar_ppos (LISTA **, ALUNO, int);
 
-void listar_elementos (LISTA **);
+
 
 #endif

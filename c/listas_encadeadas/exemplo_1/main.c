@@ -8,14 +8,16 @@ ALUNO criar_especifico ();
 
 int main ()
 {
-    LISTA **l; //Lista declarada como ponteiro duplo permite passar a cabeça da lista por referência.
-    l = inicializar_lista (); //Não é possível (?) passar por referência.
+    LISTA **l;
+    l = inicializar_lista ();
 
     adicionar_inicio (l, criar_aluno ());
     adicionar_inicio (l, criar_aluno ());
     adicionar_inicio (l, criar_aluno ());
-    adicionar_inicio (l, criar_aluno ());
-    adicionar_final (l, criar_especifico ());
+    adicionar_final (l, criar_aluno ());
+    adicionar_ppos (l, criar_especifico (), 3);
+    
+    verificar_tamanho (l);
     listar_elementos (l);
 
     return 0;
@@ -33,7 +35,7 @@ ALUNO criar_aluno ()
 ALUNO criar_especifico ()
 {
     ALUNO aluno;
-    aluno.num_id = 111;
-    aluno.matricula = 222222;
+    aluno.num_id = 123;
+    aluno.matricula = 12345;
     return aluno;
 }
