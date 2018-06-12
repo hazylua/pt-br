@@ -20,7 +20,8 @@ int main ()
     //adicionar_pordem (l, criar_especifico ());
     verificar (l);
 
-    remover_inicio (l);
+    //remover_inicio (l);
+    remover_final (l);
     verificar (l);
 
     return 0;

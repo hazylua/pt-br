@@ -31,5 +31,6 @@ void adicionar_ppos (LISTA **, ALUNO, int);
 void adicionar_pordem (LISTA **, ALUNO);
 
 void remover_inicio (LISTA **);
+void remover_final (LISTA **);
 
 #endif

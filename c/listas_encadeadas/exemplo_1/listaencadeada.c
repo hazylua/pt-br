@@ -131,3 +131,17 @@ void remover_inicio (LISTA **l)
     free (l);
     *l = temp;
 }
+
+void remover_final (LISTA **l)
+{
+    LISTA *temp = *l;
+    LISTA *prox = (*l)->prox;
+    while (prox->prox != NULL)
+    {
+        printf ("tnum_id: %d\n", temp->dados.num_id);
+        temp = temp->prox;
+        prox = prox->prox;
+    }
+    free (temp->prox);
+    temp->prox = NULL;
+}
