@@ -1,29 +1,29 @@
 section .data
-	tit			db 10, '*** Calculadora ***'
-	ltit			equ $ - tit
-	obVal1			db 10, 'Valor 1: ', 0
-	lobVal1			equ $ - obVal1
-	obVal2			db 10, 'Valor 2: ', 0
-	lobVal2			equ $ - obVal2
-	opc1			db 10, '1. Somar', 0
-	lopc1			equ $ - opc1
-	opc2			db 10, '2. Subtrair', 0
-	lopc2			equ $ - opc2
-	opc3			db 10, '3. Multiplicar', 0
-	lopc3			equ $ - opc3
-	opc4			db 10, '4. Dividir', 0
-	lopc4			equ $ - opc4
-	msgOpc			db 10, 'Qual operação você deseja realizar? ', 0
-	lmsgOpc			equ $ - msgOpc
-	msgErro			db 10, 'Valor de opção invalido.', 0
-	lmsgErro 		equ $ - msgErro
-	salLinha		db 10,0
-	lsalLinha		equ $ - salLinha
-	msgResult		db 10, 'RESULTADO: ', 0
-	lmsgResult		equ $ - msgResult	
+	tit		db 10, '*** Calculadora ***'
+	ltit		equ $ - tit
+	obVal1		db 10, 'Valor 1: ', 0
+	lobVal1		equ $ - obVal1
+	obVal2		db 10, 'Valor 2: ', 0
+	lobVal2		equ $ - obVal2
+	opc1		db 10, '1. Somar', 0
+	lopc1		equ $ - opc1
+	opc2		db 10, '2. Subtrair', 0
+	lopc2		equ $ - opc2
+	opc3		db 10, '3. Multiplicar', 0
+	lopc3		equ $ - opc3
+	opc4		db 10, '4. Dividir', 0
+	lopc4		equ $ - opc4
+	msgOpc		db 10, 'Qual operação você deseja realizar? ', 0
+	lmsgOpc		equ $ - msgOpc
+	msgErro		db 10, 'Valor de opção invalido.', 0
+	lmsgErro 	equ $ - msgErro
+	salLinha	db 10,0
+	lsalLinha	equ $ - salLinha
+	msgResult	db 10, 'RESULTADO: ', 0
+	lmsgResult	equ $ - msgResult	
 
 section .bss
-	opc		resb 2
+	opc	resb 2
 	num1	resb 10
 	num2	resb 10
 	result	resb 10
