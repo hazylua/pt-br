@@ -11,9 +11,8 @@ void liberar_lista (LISTA **l)
 {
     if (l != NULL && *l != NULL)
     {
-        printf ("555\n");
         LISTA *aux, *no = *l;
-        while ((*l) != no->prox)
+        while (no->prox != NULL)
         {
             aux = no;
             no = no->prox;
@@ -23,7 +22,7 @@ void liberar_lista (LISTA **l)
         free (l);
     }
     else
-        printf ("Lista já vazia.\n");
+        printf ("Lista já desalocada.\n");
 }
 
 int verificar_lista (LISTA *l)
@@ -154,5 +153,32 @@ void inserir_fim (LISTA **l, ALUNO al)
             aux = aux->prox;
         aux->prox = novo;
         novo->ant = aux;
+    }
+}
+int inserir_pordem (LISTA **l, ALUNO al)
+{
+    LISTA *novo = malloc (sizeof (LISTA));
+    novo->dados_aluno = al;
+    
+    if ((*l) == NULL)
+    {
+        (*l) = novo;
+        novo->prox = NULL;
+    }
+    else
+    {
+        LISTA *aux = *l;
+        while (aux->prox != NULL)
+        {
+            if (aux->dados_aluno.matricula == al.matricula)
+                return 0;
+            if (aux->prox->dados_aluno.matricula < al.matricula)
+                break;
+            aux = aux->prox;
+        }
+        aux->prox = novo->prox;
+        novo->prox = aux;
+        novo->prox = aux->prox;
+        aux->prox = novo;
     }
 }
