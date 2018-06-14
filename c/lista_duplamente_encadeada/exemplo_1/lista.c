@@ -11,6 +11,7 @@ void liberar_lista (LISTA **l)
 {
     if (l != NULL && *l != NULL)
     {
+        printf ("555\n");
         LISTA *aux, *no = *l;
         while ((*l) != no->prox)
         {
@@ -68,16 +69,53 @@ void listar_elementos  (LISTA *l)
     }
     printf ("### Fim da lista.\n\n");
 }
-void listar_matriculas (LISTA *l)
+void listar_recursivo (LISTA *l, LISTA *inicio, int i)
 {
-    int i = 1;
-    while (l != NULL)
-    { 
-        printf ("> Matrícula: %d\n", l->dados_aluno.matricula);
+    if (i == 1)
+        printf ("\n### Listando elementos ###\n\n");
+    if (l->prox == NULL)
+    {
+        printf ("*** Elemento #%d ***\n", i);
+        printf ("> Nome: %s\n", l->dados_aluno.nome);
+        printf ("> Matrícula: %d\n\n", l->dados_aluno.matricula);
+        printf ("### Fim do listamento ###\n\n");
+    }
+    else
+    {
+        printf ("*** Elemento #%d ***\n", i);
+        printf ("> Nome: %s\n", l->dados_aluno.nome);
+        printf ("> Matrícula: %d\n\n", l->dados_aluno.matricula);
         l = l->prox;
         i++;
+        listar_recursivo (l, inicio, i);
     }
-    printf ("\n");
+}
+void listar_recursivo_reverso (LISTA *l, int i, int cond)
+{
+    if (i == 0)
+        printf ("\n### Listando elementos ###\n\n");
+        i++;
+    if (l->prox != NULL && cond == 0)
+        listar_recursivo_reverso (l->prox, i, cond);
+    else
+    {
+        if (l->ant == NULL)
+        {
+            printf ("*** Elemento #%d ***\n", i);
+            printf ("> Nome: %s\n", l->dados_aluno.nome);
+            printf ("> Matrícula: %d\n\n", l->dados_aluno.matricula);
+            printf ("### Fim do listamento ###\n\n");
+        }
+        else
+        {
+            printf ("*** Elemento #%d ***\n", i);
+            printf ("> Nome: %s\n", l->dados_aluno.nome);
+            printf ("> Matrícula: %d\n\n", l->dados_aluno.matricula);
+            l = l->ant;
+            i++;
+            listar_recursivo_reverso (l->ant, i, 1);
+        }
+    }
 }
 
 void inserir_inicio (LISTA **l, ALUNO al)
@@ -98,7 +136,6 @@ void inserir_inicio (LISTA **l, ALUNO al)
         *l = novo;
     }
 }
-
 void inserir_fim (LISTA **l, ALUNO al)
 {
     LISTA *novo = malloc (sizeof (LISTA));
@@ -118,28 +155,4 @@ void inserir_fim (LISTA **l, ALUNO al)
         aux->prox = novo;
         novo->ant = aux;
     }
-}
-
-void organizar (LISTA **l)
-{
-    int swap, i;
-    do
-    { 
-        swap = 0;
-        LISTA *aux = *l;
-        LISTA *prox;
-        LISTA *ant;
-        if (aux->dados_aluno.matricula > aux->prox->dados_aluno.matricula)
-        {
-            prox = aux->prox;
-            ant = aux->ant;
-            aux->prox = prox->prox;
-            aux->ant = prox->ant;
-            prox->prox = aux;
-            prox->ant = ant;
-            swap = 1;
-        }
-        aux = aux->prox;
-    }
-    while (swap);
 }

@@ -14,13 +14,11 @@ int main ()
     inserir_inicio  (&l, criar_elemento ());
     inserir_fim     (&l, criar_elemento ());
 
-    listar_elementos (l);
+    //listar_elementos (l);
+    //listar_recursivo (l, l, 1);
+    listar_recursivo_reverso ( l, 0, 0);
 
-    organizar (&l);
-
-    listar_elementos (l);
-
-    liberar_lista (&l);
+    //liberar_lista (&l);
     return 0;
 }
 

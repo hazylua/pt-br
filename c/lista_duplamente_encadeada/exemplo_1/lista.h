@@ -25,11 +25,10 @@ int verificar_lista (LISTA *);
 int verificar_tamanho (LISTA *);
 
 void listar_elementos (LISTA *);
-void listar_matriculas (LISTA *);
+void listar_recursivo (LISTA *, LISTA *, int);
+void listar_recursivo_reverso (LISTA *, int, int);
 
 void inserir_inicio (LISTA **, ALUNO);
 void inserir_fim (LISTA **, ALUNO);
-
-void organizar (LISTA **);
 
 #endif
