@@ -1,6 +1,7 @@
 {
     "editor.minimap.enabled": false,
     "files.associations": {
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "lista.h": "c"
     }
 }
