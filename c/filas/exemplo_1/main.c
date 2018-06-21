@@ -7,6 +7,7 @@ int main ()
     printf ("*** Menu ***\n");
     FILA *f;
     int op;
+    
     do
     {
         op = menu_escolha ();

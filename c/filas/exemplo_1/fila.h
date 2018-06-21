@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define MAX 100
+#define MAX 10
 
 typedef struct aluno
 {
@@ -23,5 +23,10 @@ typedef struct fila
 
 FILA *criar_fila ();
 void liberar_fila (FILA *);
+
+int verificar_tam (FILA *);
+int verificar_vazio (FILA *);
+
+int inserir_fila (FILA *, ALUNO);
 
 #endif
