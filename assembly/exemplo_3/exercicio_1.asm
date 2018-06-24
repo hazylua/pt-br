@@ -8,7 +8,6 @@ section .data
     resposta_msg db '> Resultado: ', 0
     resposta_tam equ $ - resposta_msg
 
-
     num1 db '8', 0xA
     num2 db '4', 0xA
 
