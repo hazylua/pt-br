@@ -20,41 +20,65 @@ int verificar_tam (FILA *f)
 {
     if (f == NULL)
         return -1;
-    if (f->qtd == MAX)    
+    return f->qtd;
+}
+int verificar_preenchida (FILA *f)
+{
+    if (f == NULL)
+        return -1;
+    if (f->qtd == MAX)
     {
-        printf ("Fila não cheia.\n");
         return 1;
     }
     else
     {
-        printf ("Fila não cheia.\n");
         return 0;
     }
 }
-int verificar_vazio (FILA *f)
+int verificar_vazia (FILA *f)
 {
     if (f == NULL)
         return -1;
     if (f->qtd == 0)    
     {
-        printf ("Fila vazia.\n");
         return 1;
     }
     else
     {
-        printf ("Fila não vazia.\n");
         return 0;
     }
 }
+void mostrar_elementos (FILA *f)
+{
+    int i;
+    printf ("fim: %d\n", f->fim);
+    for (i = f->inicio; i < f->fim; i++)
+    {
+        printf ("Elemento #%d:\n", i+1);
+        printf ("Nome: %s\n", f->dados[i].nome);
+        printf ("Número de matrícula: %d\n\n", f->dados[i].num_matricula);
+    }
+    
+}
 
-int inserir_fila (FILA *f, ALUNO al)
+int inserir_final (FILA *f, ALUNO al)
 {
     if (f == NULL)
-        return 0;
+        return -1;
     if (f->qtd == MAX)
         return 0;
     f->dados[f->fim] = al;
-    f->fim = (f->fim+1) % MAX;
+    f->fim = (f->fim+1); //% MAX;
     f->qtd++;
+    return 1;
+}
+int remover_inicio (FILA *f)
+{
+    if (f == NULL)
+        return -1;
+    if (f->qtd == 0)
+        return 0;
+    f->inicio = (f->inicio+1) % MAX;
+    f->qtd--;
     return 1;
 }

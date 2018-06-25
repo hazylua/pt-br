@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
 
 #define MAX 10
 
@@ -25,8 +25,11 @@ FILA *criar_fila ();
 void liberar_fila (FILA *);
 
 int verificar_tam (FILA *);
-int verificar_vazio (FILA *);
+int verificar_preenchida (FILA *);
+int verificar_vazia (FILA *);
+void mostrar_elementos (FILA *);
 
-int inserir_fila (FILA *, ALUNO);
+int inserir_final (FILA *, ALUNO);
+int remover_inicio (FILA *);
 
 #endif
