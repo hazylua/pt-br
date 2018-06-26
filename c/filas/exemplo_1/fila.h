@@ -27,9 +27,9 @@ void liberar_fila (FILA *);
 int verificar_tam (FILA *);
 int verificar_preenchida (FILA *);
 int verificar_vazia (FILA *);
-void mostrar_elementos (FILA *);
+int mostrar_elementos (FILA *);
 
-int inserir_final (FILA *, ALUNO);
+int inserir_final (FILA *);
 int remover_inicio (FILA *);
 
 #endif

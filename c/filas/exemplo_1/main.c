@@ -4,12 +4,10 @@ int menu_escolha ();
 
 int main ()
 {
-    ALUNO al;
-
     FILA *f;
-    int op = 1;
+    int op;
     
-    while (op != 0)
+    do
     {
         op = menu_escolha ();
         switch (op)
@@ -17,87 +15,71 @@ int main ()
             case 1:
             {
                 f = criar_fila ();
-                printf ("Fila criada.\n");
+                printf ("> Fila criada.\n");
             }
             break;
 
             case 2:
             {
                 liberar_fila (f);
-                printf ("Fila liberada.\n");
+                printf ("> Fila liberada.\n");
             }
             break;
             
             case 3:
-            {
-                printf ("Tamanho da fila: %d\n", verificar_tam (f));
-            }
+                printf ("> Tamanho da fila: %d\n", verificar_tam (f));
             break;
 
             case 4:
             {
                 if (verificar_preenchida (f) == 1)
-                    printf ("Fila preenchida.\n");
+                    printf ("> Fila preenchida.\n");
                 else if (verificar_preenchida (f) == 0)
-                    printf ("Fila não preenchida.\n");
+                    printf ("> Fila não preenchida.\n");
                 else
-                    printf ("Fila não alocada.\n");
+                    printf ("> Fila não alocada.\n");
             }
             break;
 
             case 5:
             {
                 if (verificar_vazia (f) == 1)
-                    printf ("Fila vazia.\n");
+                    printf ("> Fila vazia.\n");
                 else if (verificar_vazia (f) == 0)
-                    printf ("Fila não vazia.\n");
+                    printf ("> Fila não vazia.\n");
                 else
-                    printf ("Fila não alocada.\n");
+                    printf ("> Fila não alocada.\n");
             }
             break;
 
             case 6:
             {
-                if (inserir_final (f, al) == 1)
-                {
-                    printf ("Nome do aluno: ");
-                    scanf ("%c", &al.nome);
-                    printf ("Matrícula do aluno: ");
-                    scanf ("%d", &al.num_matricula);
-                    printf ("Novo elemento inserido.\n");
-                    al.num_matricula++;
-                }
-                else if (inserir_final (f, al) == 0)
-                    printf ("Fila cheia.\n");
+                if (inserir_final (f) == 1)
+                    printf ("> Novo elemento inserido.\n");
+                else if (inserir_final (f) == 0)
+                    printf ("> Fila cheia.\n");
                 else
-                    printf ("Fila não alocada.\n");
+                    printf ("> Fila não alocada.\n");
             }
             break;
 
             case 7:
             {
                 if (remover_inicio (f) == 1)
-                    printf ("Elemento removido.\n");
+                    printf ("> Elemento removido.\n");
                 else if (remover_inicio (f) == 0)
-                    printf ("Fila vazia.\n");
+                    printf ("> Fila vazia.\n");
                 else
-                    printf ("Fila não alocada.\n");
+                    printf ("> Fila não alocada.\n");
             }
             break;
 
             case 8:
-            {
-                printf ("Exibindo elementos:\n");
                 mostrar_elementos (f);
-                printf ("Pressione qualquer tecla para continuar.");
-                while (getchar () != '\n' && getchar () != EOF);
-                getchar ();
-            }
-            break;
-
-            
+            break;      
         }
-    }
+    } while (op != 0);
+    
     return 0;
 }
 
@@ -120,7 +102,9 @@ int menu_escolha ()
     scanf ("%d", &escolha);
     printf ("\n");
 
-    //system ("cls");
-    //system ("clear");
+    /*
+    system ("cls");
+    system ("clear");
+    */
     return escolha;
 }
