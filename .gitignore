@@ -1,4 +1,3 @@
-#Ignorar pastas "bin" e arquivos executáveis.
-bin/
-*.exe
-*.txt
+.*
+!/.gitignore
+settings.json
