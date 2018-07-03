@@ -93,6 +93,10 @@ int inserir_final (FILA *f)
     if (no == NULL)
         return 0;
 
+    no->dados.nome = "Aluno";
+    no->dados.num_matricula = 1;
+
+    /*
     printf ("Nome do aluno: ");
     scanf ("%s", no->dados.nome);
     printf ("Nome inserido: %s\n", no->dados.nome);
@@ -100,10 +104,10 @@ int inserir_final (FILA *f)
     printf ("Matrícula do aluno: ");
     scanf ("%d", &(no->dados.num_matricula));
     printf ("Matrícula inserida: %d\n", no->dados.num_matricula);
-
+    */
     printf ("help\n");
     no->prox = NULL;
-    if (f->fim = NULL)
+    if (f->fim == NULL)
         f->inicio = no;
     else
         f->fim->prox = no;

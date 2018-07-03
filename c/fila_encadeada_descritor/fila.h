@@ -5,12 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX 10
-
 typedef struct aluno
 {
     int num_matricula;
-    char nome[MAX];
+    char *nome;
 } ALUNO;
 
 typedef struct elemento
