@@ -8,7 +8,7 @@
 typedef struct aluno
 {
     int num_matricula;
-    char *nome;
+    char nome[100];
 } ALUNO;
 
 typedef struct elemento

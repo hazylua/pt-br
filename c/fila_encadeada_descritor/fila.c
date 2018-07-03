@@ -15,7 +15,7 @@ void liberar_fila (FILA *f)
 {
     if (f != NULL)
     {
-        ALUNO *no;
+        ELEMENTO *no;
         while (f->inicio != NULL)
         {
             no = f->inicio;
@@ -38,19 +38,17 @@ int verificar_preenchida (FILA *f)
     if (f == NULL)
         return -1;
 
-    else
-        return 0;
+    return 0;
 }
 int verificar_vazia (FILA *f)
 {
     if (f == NULL)
         return -1;
 
-    if (f->inicio == NULL)    
-        return 1;
-
-    else
+    if (f->qtd != 0)    
         return 0;
+
+    return 1;
 }
 int mostrar_elementos (FILA *f)
 {
@@ -66,18 +64,20 @@ int mostrar_elementos (FILA *f)
         return 0;
     }
 
-    int i, cont = 1;
+    int cont = 1;
 
-    FILA *aux = f;
+    ELEMENTO *aux = f->inicio;
     printf ("Exibindo elementos:\n\n");
-    for (i = 0; i < aux->qtd; i++)
+    do
     {
         printf ("Elemento #%d:\n", cont);
-        printf ("Nome: %s\n", aux->inicio->dados.nome);
-        printf ("Número de matrícula: %d\n\n", aux->inicio->dados.nome);
-        f->inicio = f->inicio->prox;
+        printf ("Nome: %s\n", aux->dados.nome);
+        printf ("Número de matrícula: %d\n", aux->dados.num_matricula);
+        aux = aux->prox;
         cont++;
     }
+    while (aux != NULL);
+    
     printf ("Pressione qualquer tecla para continuar: ");
     while (getchar () != '\n' && getchar () != EOF);
     getchar ();
@@ -93,10 +93,6 @@ int inserir_final (FILA *f)
     if (no == NULL)
         return 0;
 
-    no->dados.nome = "Aluno";
-    no->dados.num_matricula = 1;
-
-    /*
     printf ("Nome do aluno: ");
     scanf ("%s", no->dados.nome);
     printf ("Nome inserido: %s\n", no->dados.nome);
@@ -104,9 +100,9 @@ int inserir_final (FILA *f)
     printf ("Matrícula do aluno: ");
     scanf ("%d", &(no->dados.num_matricula));
     printf ("Matrícula inserida: %d\n", no->dados.num_matricula);
-    */
-    printf ("help\n");
+
     no->prox = NULL;
+    
     if (f->fim == NULL)
         f->inicio = no;
     else
@@ -124,6 +120,7 @@ int remover_inicio (FILA *f)
         return 0;
         
     ELEMENTO *no = f->inicio;
+    f->inicio = f->inicio->prox;
     free (no);
     if (f->inicio == NULL)
         f->fim = NULL;

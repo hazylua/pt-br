@@ -1,17 +1,31 @@
 #include "fila.h"
 
 int menu_escolha ();
+void clean_stdin ();
 
 int main ()
 {
     FILA *f;
     int op;
     
-    do
+    while (1)
     {
         op = menu_escolha ();
         switch (op)
         {
+            default:
+            {
+                printf ("> Tente novamente.\n");
+                clean_stdin ();
+            } break;
+
+            case 0:
+            {
+                liberar_fila (f);
+                printf ("Encerrando o programa...\n");
+                return 0;
+            } break;
+
             case 1:
             {
                 f = criar_fila ();
@@ -32,12 +46,10 @@ int main ()
 
             case 4:
             {
-                if (verificar_preenchida (f) == 1)
-                    printf ("> Fila preenchida.\n");
-                else if (verificar_preenchida (f) == 0)
-                    printf ("> Fila não preenchida.\n");
-                else
+                if (verificar_preenchida (f) == -1)
                     printf ("> Fila não alocada.\n");
+                    
+                printf ("> Fila não preenchida.\n");
             }
             break;
 
@@ -78,8 +90,8 @@ int main ()
                 mostrar_elementos (f);
             break;      
         }
-    } while (op != 0);
-    
+    }
+
     return 0;
 }
 
@@ -102,9 +114,17 @@ int menu_escolha ()
     scanf ("%d", &escolha);
     printf ("\n");
 
-    system ("cls");
-    /*
     system ("clear");
+    /*
+    system ("cls");
     */
     return escolha;
+}
+
+void clean_stdin ()
+{
+    int c;
+    do {
+        c = getchar();
+    } while (c != '\n' && c != EOF);
 }
