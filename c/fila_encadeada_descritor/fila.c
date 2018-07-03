@@ -52,10 +52,6 @@ int verificar_vazia (FILA *f)
     else
         return 0;
 }
-
-/*
-Continuar a partir daqui.
-*/
 int mostrar_elementos (FILA *f)
 {
     if (f == NULL)
@@ -64,7 +60,7 @@ int mostrar_elementos (FILA *f)
         return -1;
     }
 
-    if (f->qtd == 0)
+    if (f->inicio == NULL)
     {
         printf ("> Fila vazia.\n");
         return 0;
@@ -72,12 +68,14 @@ int mostrar_elementos (FILA *f)
 
     int i, cont = 1;
 
+    FILA *aux = f;
     printf ("Exibindo elementos:\n\n");
-    for (i = f->inicio; i < f->fim; i++)
+    for (i = 0; i < aux->qtd; i++)
     {
         printf ("Elemento #%d:\n", cont);
-        printf ("Nome: %s\n", f->dados[i].nome);
-        printf ("Número de matrícula: %d\n\n", f->dados[i].num_matricula);
+        printf ("Nome: %s\n", aux->inicio->dados.nome);
+        printf ("Número de matrícula: %d\n\n", aux->inicio->dados.nome);
+        f->inicio = f->inicio->prox;
         cont++;
     }
     printf ("Pressione qualquer tecla para continuar: ");
@@ -91,22 +89,25 @@ int inserir_final (FILA *f)
     if (f == NULL)
         return -1;
 
-    if (f->qtd == MAX)
+    ELEMENTO *no = (ELEMENTO *) malloc (sizeof (ELEMENTO));
+    if (no == NULL)
         return 0;
 
-    ALUNO al;
-
     printf ("Nome do aluno: ");
-    scanf ("%s", al.nome);
-    printf ("Nome inserido: %s\n", al.nome);
+    scanf ("%s", no->dados.nome);
+    printf ("Nome inserido: %s\n", no->dados.nome);
 
     printf ("Matrícula do aluno: ");
-    scanf ("%d", &al.num_matricula);
-    printf ("Matrícula inserida: %d\n", al.num_matricula);
+    scanf ("%d", &(no->dados.num_matricula));
+    printf ("Matrícula inserida: %d\n", no->dados.num_matricula);
 
-    f->dados[f->fim] = al;
-    /* f->fim = (f->fim+1) % MAX; */
-    f->fim = (f->fim+1);
+    printf ("help\n");
+    no->prox = NULL;
+    if (f->fim = NULL)
+        f->inicio = no;
+    else
+        f->fim->prox = no;
+    f->fim = no;
     f->qtd++;
     return 1;
 }
@@ -115,11 +116,13 @@ int remover_inicio (FILA *f)
     if (f == NULL)
         return -1;
 
-    if (f->qtd == 0)
+    if (f->inicio == NULL)
         return 0;
         
-    /* f->inicio = (f->inicio+1) % MAX; */
-    f->inicio = (f->inicio+1);
+    ELEMENTO *no = f->inicio;
+    free (no);
+    if (f->inicio == NULL)
+        f->fim = NULL;
     f->qtd--;
     return 1;
 }

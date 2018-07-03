@@ -102,8 +102,8 @@ int menu_escolha ()
     scanf ("%d", &escolha);
     printf ("\n");
 
-    /*
     system ("cls");
+    /*
     system ("clear");
     */
     return escolha;

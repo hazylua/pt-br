@@ -16,7 +16,7 @@ typedef struct aluno
 typedef struct elemento
 {
     ALUNO dados;
-    ALUNO *prox;
+    struct elemento *prox;
 } ELEMENTO;
 
 typedef struct fila
