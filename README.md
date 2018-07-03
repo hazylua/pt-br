@@ -6,6 +6,8 @@ Formatação básica para arquivos como esse README.md: [basic writing and forma
 
 Git pelo terminal:
 ```
+git clone "https://github.com/yb00/pt-br.git"
+[...]
 git add -A
 git commit -m "Minha mensagem."
 git push -u https://github.com/yb00/pt-br.git
