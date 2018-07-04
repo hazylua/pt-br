@@ -7,7 +7,7 @@ int main ()
     PILHA *p;
     int op;
     
-    while (1)
+    while (true)
     {
         op = menu_escolha ();
         switch (op)
@@ -16,14 +16,16 @@ int main ()
             {
                 printf ("> Tente novamente.\n");
                 clean_stdin ();
-            } break;
+            }
+            break;
 
             case 0:
             {
                 liberar_pilha (p);
                 printf ("Encerrando o programa...\n");
                 return 0;
-            } break;
+            }
+            break;
 
             case 1:
             {
@@ -95,13 +97,25 @@ int main ()
 
             case 10:
             {
-                if (remover_final (p) == 1)
+                if (esvaziar_pilha (p) == 1)
                     printf ("> Pilha esvaziada.\n");
-                else if (remover_final (p) == 0)
+                else if (esvaziar_pilha (p) == 0)
                     printf ("> Pilha vazia.\n");
                 else
                     printf ("> Pilha não alocada.\n");
             }
+            break;
+
+            case 11:
+            {
+                if (validar_parenteses (p) == 1)
+                    printf ("> Pilha verificada.\n");
+                else if (validar_parenteses (p) == 0)
+                    printf ("> Pilha vazia.\n");
+                else
+                    printf ("> Pilha não alocada.\n");
+            }
+            break;
         }
     }
 
@@ -124,13 +138,14 @@ int menu_escolha ()
     printf ("8. Exibir elementos\n");
     printf ("9. Exibir elemento no topo da pilha\n");
     printf ("10. Esvaziar pilha\n");
+    printf ("11. Validar parênteses\n");
 
     printf ("\n> Escolha: ");
     scanf ("%d", &escolha);
     printf ("\n");
 
-    system ("clear");
     /*
+    system ("clear");
     system ("cls");
     */
     return escolha;

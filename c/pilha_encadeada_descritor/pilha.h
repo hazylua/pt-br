@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct elemento
 {
@@ -32,6 +33,9 @@ int mostrar_topo (PILHA *);
 int inserir_final (PILHA *);
 int remover_final (PILHA *);
 int esvaziar_pilha (PILHA *);
+
+// Validação de parênteses
+int validar_parenteses (PILHA *);
 
 // Alternativa a função fflush (stdin)
 void clean_stdin ();

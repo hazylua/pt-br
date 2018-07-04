@@ -124,11 +124,17 @@ int remover_final (PILHA *p)
     if (p->inicio == NULL)
         return 0;
 
+    if (p->inicio == p->fim)
+    {
+        p->qtd--;
+        return 1;
+    }
+
     ELEMENTO *no = p->fim;
     free (no);
 
     ELEMENTO *aux = p->inicio;
-    
+
     while (aux->prox != p->fim)
         aux = aux->prox;
     aux->prox = NULL;
@@ -145,9 +151,51 @@ int esvaziar_pilha (PILHA *p)
     if (p->inicio == NULL)
         return 0;
 
-    int i;
-    for (i = 0; i <= p->qtd; i++)
-        esvaziar_pilha (p);
+    ELEMENTO *no;
+    while (true)
+    {
+        if (p->inicio == p->fim)
+        {
+            p->qtd--;
+            return 1;
+        }
+        no = p->fim;
+        free (no);
+
+        ELEMENTO *aux = p->inicio;
+
+        while (aux->prox != p->fim)
+            aux = aux->prox;
+        aux->prox = NULL;
+        p->fim = aux;
+        p->qtd--;
+    }
+    return 1;
+}
+
+int validar_parenteses (PILHA *p)
+{
+    if (p == NULL)
+        return -1;
+    
+    if (p->inicio == NULL)
+        return 0;
+
+    ELEMENTO *aux = p->inicio;
+    int cont = 0;
+    while (aux != NULL)
+    {
+        if (aux->letra == '{' || aux->letra == '[' || aux->letra == '(')
+            cont++;
+        else if (aux->letra == '}' || aux->letra == ']' || aux->letra == ')')
+            cont--;
+        aux = aux->prox;
+    }
+
+    if (cont == 0)
+        printf ("Fórmula válida.\n");
+    else
+        printf ("Fórmula inválida.\n");
 
     return 1;
 }
