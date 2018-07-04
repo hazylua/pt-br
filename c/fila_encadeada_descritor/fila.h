@@ -30,6 +30,7 @@ void liberar_fila (FILA *);
 int verificar_tam (FILA *);
 int verificar_preenchida (FILA *);
 int verificar_vazia (FILA *);
+int mostrar_recursivo (FILA *, ELEMENTO *, int);
 int mostrar_elementos (FILA *);
 
 int inserir_final (FILA *);

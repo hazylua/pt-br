@@ -50,6 +50,23 @@ int verificar_vazia (FILA *f)
 
     return 1;
 }
+int mostrar_recursivo (FILA *f, ELEMENTO *aux, int cont)
+{
+    if (aux == NULL)
+    {
+        return 1;
+    }
+    else
+    {
+        printf ("Elemento #%d:\n", cont);
+        printf ("Nome: %s\n", aux->dados.nome);
+        printf ("Número de matrícula: %d\n", aux->dados.num_matricula);
+        aux = aux->prox;
+        cont++;
+        mostrar_recursivo (f, aux, cont);
+    }
+}
+
 int mostrar_elementos (FILA *f)
 {
     if (f == NULL)

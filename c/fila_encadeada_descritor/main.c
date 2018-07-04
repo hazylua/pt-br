@@ -87,7 +87,8 @@ int main ()
             break;
 
             case 8:
-                mostrar_elementos (f);
+                mostrar_recursivo (f, f->inicio, 1);
+                //mostrar_elementos (f);
             break;      
         }
     }
