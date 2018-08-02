@@ -24,5 +24,27 @@ filaPrio *fila_cria ()
 
 void *fila_libera (filaPrio **fila)
 {
-    free (fila);
+    free (*fila);
+    *fila = NULL;
+}
+
+void acessa_tamanho (filaPrio *fila)
+{
+    printf ("Tamanho da fila: %d\n", fila->qtd);
+}
+
+void verifica_vazio (filaPrio *fila)
+{
+    if (fila->qtd == 0)
+        printf ("Fila vazia.\n");
+    else
+        printf ("Fila não vazia.\n");
+}
+
+void verifica_cheia (filaPrio *fila)
+{
+    if (fila->qtd == MAX)
+        printf ("Fila cheia.\n");
+    else
+        printf ("Fila não cheia.\n");
 }
