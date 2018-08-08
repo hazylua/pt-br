@@ -1,4 +1,3 @@
-// adj represente o nó adjacente, sendo que o primeiro número dos pares deste vetor represente o nó adjacente e o segundo número representa a distância entre esses nós. 
 var nos = [
     {
         // Vértice 1
@@ -47,22 +46,3 @@ var nos = [
         cor: "branco"
     }
 ]
-
-function bfs( s ) {
-    var lista = [ s ];
-    
-    nos[ s ].cor = "branco";
-
-    while ( lista.length > 0 ) {
-        var u = lista.shift ();
-        no [ u ].adj.forEach ( function ( v ) {
-            if ( no[ v ].cor == "branco" ) {
-                nos [ v ].cor = "cinza";
-                lista.push ( v );
-            }
-        } );
-        nos [ v ].cor == "preto";
-    }
-}
-
-bfs ( 0 );
