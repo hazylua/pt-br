@@ -1,8 +1,8 @@
 # pt-br - README.md
 Repositório dedicado ao armazenamento de códigos não específicos.
 
-##### Lembretes:
-Formatação básica para arquivos como esse README.md: [basic writing and formatting syntax.](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
+##### Links:
+Formatação básica: [basic writing and formatting syntax.](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
 Git pelo terminal:
 ```
