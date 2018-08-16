@@ -35,3 +35,34 @@ int fila_cheia(FilaPrio *fila)
         return -1;
     return (fila->qtd == MAX);
 }
+
+void fila_promover(FilaPrio *fila, int filho)
+{
+    int pai;
+    Paciente temp;
+    pai = (filho - 1) / 2;
+    while ((filho > 0) && (fila->dados[pai].prio <= fila->dados[filho].prio))
+    {
+        temp = fila->dados[filho];
+        fila->dados[filho] = fila->dados[pai];
+        fila->dados[pai] = temp;
+
+        filho = pai;
+        pai = (pai - 1) / 2;
+    } 
+}
+
+int fila_inserir(FilaPrio *fila, char *nome, int prio)
+{
+    if(fila == NULL)
+        return -1;
+    if(fila->qtd == MAX)
+        return 0;
+    
+    strcpy(fila->dados[fila->qtd].nome, nome);
+    fila->dados[fila->qtd].prio = prio;
+    fila_promover (fila, fila->qtd);
+    fila->qtd++;
+
+    return 1;
+}

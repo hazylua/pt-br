@@ -6,14 +6,14 @@
 
 typedef struct paciente
 {
-    string nome;
-    int prioridade;
+    char nome[30];
+    int prio;
 } Paciente;
 
 typedef struct fila_prioridade
 {
     int qtd;
-    struct aeronave dados[MAX];
+    struct paciente dados[MAX];
 } FilaPrio;
 
 FilaPrio *criar_fila();
@@ -21,3 +21,5 @@ void liberar_fila(FilaPrio **fila);
 int fila_tamanho(FilaPrio *fila);
 int fila_vazia(FilaPrio *fila);
 int fila_cheia(FilaPrio *fila);
+void fila_promover(FilaPrio *fila, int filho);
+int fila_inserir(FilaPrio *fila, char *nome, int prio);
