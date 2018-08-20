@@ -43,6 +43,7 @@ void fila_promover(FilaPrio *fila, int filho)
     pai = (filho - 1) / 2;
     while ((filho > 0) && (fila->dados[pai].prio <= fila->dados[filho].prio))
     {
+        printf("Pai = %d, Filho = %d, Executou.\n", pai, filho);
         temp = fila->dados[filho];
         fila->dados[filho] = fila->dados[pai];
         fila->dados[pai] = temp;
@@ -71,4 +72,33 @@ void fila_rebaixar(FilaPrio *fila, int pai)
 {
     Paciente temp;
     int filho = (2 * pai) + 1;
+    while(filho < fila->qtd)
+    {
+        if(filho < fila->qtd-1)
+            if(fila->dados[filho].prio < fila->dados[filho+1].prio)
+                filho++;
+        if(fila->dados[pai].prio >= fila->dados[filho].prio)
+            break;
+        
+        temp = fila->dados[pai];
+        fila->dados[pai] = fila->dados[filho];
+        fila->dados[filho] = temp;
+
+        pai = filho;
+        filho = (2 * pai) + 1;
+    }
+}
+
+int fila_remover(FilaPrio *fila)
+{
+    if(fila == NULL)
+        return -1;
+    if(fila->qtd == 0)
+        return 0;
+
+    fila->qtd--;
+    fila->dados[0] = fila->dados[fila->qtd];
+    fila_rebaixar(fila, 0);
+
+    return 1;
 }

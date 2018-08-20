@@ -23,4 +23,5 @@ int fila_vazia(FilaPrio *fila);
 int fila_cheia(FilaPrio *fila);
 void fila_promover(FilaPrio *fila, int filho);
 int fila_inserir(FilaPrio *fila, char *nome, int prio);
+void fila_rebaixar(FilaPrio *fila, int pai);
 int fila_remover(FilaPrio *fila);
