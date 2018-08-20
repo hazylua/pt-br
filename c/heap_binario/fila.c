@@ -66,3 +66,9 @@ int fila_inserir(FilaPrio *fila, char *nome, int prio)
 
     return 1;
 }
+
+void fila_rebaixar(FilaPrio *fila, int pai)
+{
+    Paciente temp;
+    int filho = (2 * pai) + 1;
+}
