@@ -9,8 +9,8 @@ FilaPrio *criar_fila()
     return fila;
 }
 
-<<<<<<< HEAD
-void mergeHeap(FilaPrio* fila1, FilaPrio* fila2, int index){
+void mergeHeap(FilaPrio* fila1, FilaPrio* fila2, int index)
+{
     if ( index < 0 ){
         return;
     } else {
@@ -22,19 +22,17 @@ void mergeHeap(FilaPrio* fila1, FilaPrio* fila2, int index){
 
 }
 
-int procura(FilaPrio *fila1, Paciente paciente){
+int procura(FilaPrio *fila1, Paciente paciente)
+{
     int i;
     for ( i = 0; i < fila1->qtd; i++ ){
         if (!strcmp(fila1->dados[i].nome, paciente.nome)){
             return 0;            
         }
-
     }
     return 1;
 }
 
-=======
->>>>>>> 8b9ca447c08d7c5e211000860cf9094e41dbfff8
 void liberar_fila(FilaPrio **fila)
 {
     free(*fila);
@@ -69,7 +67,6 @@ void fila_promover(FilaPrio *fila, int filho)
     pai = (filho - 1) / 2;
     while ((filho > 0) && (fila->dados[pai].prio <= fila->dados[filho].prio))
     {
-        printf("Pai = %d, Filho = %d, Executou.\n", pai, filho);
         temp = fila->dados[filho];
         fila->dados[filho] = fila->dados[pai];
         fila->dados[pai] = temp;
