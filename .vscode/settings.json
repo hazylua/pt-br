@@ -1,0 +1,8 @@
+{
+    "editor.minimap.enabled": false,
+    "editor.cursorStyle": "line",
+    "editor.wordWrap": "on",
+    "files.associations": {
+        "iostream": "cpp"
+    },
+}

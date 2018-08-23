@@ -9,6 +9,7 @@ FilaPrio *criar_fila()
     return fila;
 }
 
+<<<<<<< HEAD
 void mergeHeap(FilaPrio* fila1, FilaPrio* fila2, int index){
     if ( index < 0 ){
         return;
@@ -32,6 +33,8 @@ int procura(FilaPrio *fila1, Paciente paciente){
     return 1;
 }
 
+=======
+>>>>>>> 8b9ca447c08d7c5e211000860cf9094e41dbfff8
 void liberar_fila(FilaPrio **fila)
 {
     free(*fila);
