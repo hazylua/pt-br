@@ -23,11 +23,11 @@ int main()
         nome[0] = '\0';
     }
     
-    printf("%d\n", fila_tamanho(fila2));
-    mergeHeap(fila, fila2, fila_tamanho(fila2)-1);
-    fila_inserir(fila, nome, NUM_PACIENTES-i);
-    nome[0] = '\0';
     
+    printf("%d\n", fila_tamanho(fila));
+    mergeHeap(fila, fila2, fila_tamanho(fila2)-1);
+    nome[0] = '\0';
+
     mostrar_fila(fila);
     liberar_fila(&fila);
     return 0;
@@ -37,12 +37,13 @@ void mostrar_fila(FilaPrio *fila)
 {
     int i;
     printf ("Lista: [");
-    for(i = 0; i < NUM_PACIENTES; i++)
+    int qtd = fila_tamanho(fila);
+    for(i = 0; i < qtd; i++)
     {
         printf ("%s", fila->dados[i].nome);
-        if (i != NUM_PACIENTES-1)
+        if(i!=qtd-1)
             printf (", ");
     }
     printf ("]\n");
-    printf("Tamanho da fila: %d\n", fila_tamanho(fila));
+    printf("Tamanho da fila: %d\n", qtd);
 }

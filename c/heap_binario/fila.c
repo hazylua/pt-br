@@ -14,6 +14,7 @@ void mergeHeap(FilaPrio* fila1, FilaPrio* fila2, int index)
     if ( index < 0 ){
         return;
     } else {
+        printf("%d Resultado\n", procura(fila1, fila2->dados[index]));
         if(procura(fila1, fila2->dados[index])){
             fila_inserir(fila1, fila2->dados[index].nome, fila2->dados[index].prio);
         }
