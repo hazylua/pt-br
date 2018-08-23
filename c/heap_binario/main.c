@@ -26,6 +26,7 @@ int main()
     
     printf("%d\n", fila_tamanho(fila));
     mergeHeap(fila, fila2, fila_tamanho(fila2)-1);
+    liberar_fila(&fila2);
     nome[0] = '\0';
 
     mostrar_fila(fila);
