@@ -12,13 +12,6 @@ struct dados {
 	int matricula;
 };
 typedef struct dados Alunos;
-
-struct hash {
-
-	Alunos **dados;
-	int qtd;
-	int tam;
-};
 typedef struct hash Hash;
 
 Hash* hash_cria();

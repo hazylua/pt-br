@@ -1,10 +1,18 @@
 #include "hash.h"
 
+struct hash {
+
+	Alunos **dados;
+	int qtd;
+	int tam;
+};
+
 Hash* hash_cria() {
 
 	Hash *hashtable = malloc( sizeof( Hash ) );
 
 	if ( hashtable ) {
+		
 		hashtable->qtd = 0;
 		hashtable->tam = table_tam;
 		hashtable->dados = malloc( table_tam * sizeof( Alunos * ));
@@ -29,17 +37,17 @@ void hash_libera( Hash **hashtable ) {
 }
 
 int insere(Hash *ht){
-	Alunos *al;
-	al->matricula = 13769644;
-	printf("dsds %d\n", ht->qtd);
+    Alunos *al = (Alunos*) malloc(sizeof(Alunos));
+	al->matricula = 130;
+	printf("Insere QTD %d\n", ht->qtd);
 	int index = hashCode(al->matricula, ht);
-	printf("%d\n", index);
+	printf("Insere INDEX %d\n", index);
 	
 	ht->dados[index] = al;
 	if(ht->dados[index]){
 		
 		ht->qtd++;
-		printf("dsds %d\n", ht->qtd);
+		printf("Insere QTD %d\n", ht->qtd);
 		return 1;
 	}
 	return 0;
@@ -48,7 +56,7 @@ int insere(Hash *ht){
 int busca(int matricula, Hash *ht){
 	Alunos *al;
 	int index = hashCode(matricula, ht);
-	printf("%d\n", index);
+	printf("Busca INDEX %d\n", index);
 
 	al = ht->dados[index];
 	if ( al )
