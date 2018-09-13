@@ -41,7 +41,8 @@ void hash_libera( Hash **hashtable ) {
 
 int hash_insere( Hash *hashtable, int matricula, char *nome ) {
 
-    Alunos *al;
+    Alunos *al = (Alunos *) malloc( sizeof ( Alunos ) );
+    
     al->matricula = matricula;
     al->nome = nome;
 
