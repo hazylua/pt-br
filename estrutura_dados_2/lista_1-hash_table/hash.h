@@ -32,4 +32,13 @@ int inserir( Hash *, int, char * );
 int buscar( Hash *, int );
 int hashing( int, int );
 
+//Tratamento de colisões.
+
+//Endereçamento aberto por sondagem linear.
+int sondagem_linear( int, int, int );
+//Endereçamento aberto por sondagem quadrática.
+int sondagem_quadratica( int, int, int );
+//Endereçamento aberto por duplo hash.
+int duplo_hash( int, int, int, int );
+
 #endif

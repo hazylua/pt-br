@@ -70,3 +70,20 @@ int hashing( int chave, int tabela_tam ) {
     val = val - (int) val;
     return (int) (tabela_tam * val);
 }
+
+int sondagem_linear( int pos, int i, int tabela_tam ) {
+
+    return ((pos + i) & 0x7FFFFFFF) % tabela_tam;
+}
+
+int sondagem_quadratica( int pos, int i, int tabela_tam ) {
+
+    pos = pos + (2 * i) + (5 * i * i);
+    return (pos & 0x7FFFFFFF) % tabela_tam;
+}
+
+int duplo_hash( int hash_1, int chave, int i, int tabela_tam ) {
+
+    int hash_2 = hashing( chave, tabela_tam - 1 ) + 1;
+    return ((hash_1 + (i * hash_2)) & 0x7FFFFFFF) % tabela_tam;
+}
