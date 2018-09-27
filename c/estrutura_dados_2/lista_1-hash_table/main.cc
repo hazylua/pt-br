@@ -1,11 +1,14 @@
 #include "hash.h"
 
+void clean_stdin();
 int menu_escolha ();
 
 int main()
 {
     int op;
-
+    Hash *hashtable_nome;
+    Hash *hashtable_matr;
+    Lista *lista;
     while( 1 )
     {
         op = menu_escolha();
@@ -18,18 +21,22 @@ int main()
 
             case 0:
             {
-                Hash *hashtable_nome = hash_cria();
-                Hash *hashtable_matr = hash_cria();
+                lista = lista_cria();
+                hashtable_nome = hash_cria();
+                hashtable_matr = hash_cria();
             } break;
 
             case 1:
             {
+                lista_libera(&lista);
                 hash_libera(&hashtable_nome);
                 hash_libera(&hashtable_matr);
             } break;
 
             case 2:
             {
+                lista_insere( lista, 2017001, "Yago" );
+                printf("testestetete\n");
                 inserir(hashtable_nome, hashtable_matr, 2017001, "Yago" );
             } break;
 
@@ -39,11 +46,6 @@ int main()
             } break;
 
             case 4:
-            {
-                buscar(hashtable_matr, 2017001);
-            } break;
-
-            case 5:
             {
                 buscar(hashtable_matr, 2017001);
             } break;

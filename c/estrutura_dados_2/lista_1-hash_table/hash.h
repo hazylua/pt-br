@@ -15,9 +15,13 @@ struct dados{
     char *nome;
     int matricula;
 };
-typedef struct lista lista;
+typedef struct lista Lista;
 typedef struct dados Alunos;
 typedef struct hash Hash;
+
+Lista *lista_cria();
+int lista_insere( Lista *, int, char const * );
+void lista_libera( Lista ** );
 
 //Alocação da tabela hash.
 Hash *hash_cria();

@@ -2,9 +2,9 @@
 
 struct lista {
     Alunos *al;
-    Alunos *prox;
-    Alunos *ant;
-}
+    Lista *prox;
+    Lista *ant;
+};
 
 struct hash
 {
@@ -12,6 +12,56 @@ struct hash
     int qtd;
     int tam;
 };
+
+Lista *lista_cria()
+{
+    Lista *l = (Lista *) malloc( sizeof ( Lista ) ); 
+    l->prox = NULL;
+    l->ant = NULL;
+    l->al = NULL;
+
+    return l;
+}
+
+int lista_insere( Lista *l, int matricula, char const *nome )
+{
+    Lista *novo = lista_cria();
+    Lista *temp = l;
+
+    if((*novo)->al->matricula)
+
+    novo->al->nome = (char *)malloc(strlen(nome));
+    strcpy(novo->al->nome, nome);
+    novo->al->matricula = matricula;
+
+    if( l->prox == NULL && l->ant == NULL )
+    {
+        l = novo;
+        return 1;
+    }
+    else
+    {
+        while( temp->prox != NULL ) temp = temp->prox;
+        temp->prox = novo;
+        novo->ant = temp;
+        return 1;
+    }
+    return 0;
+}
+
+void lista_libera( Lista **lista )
+{
+    Lista *temp;
+
+    while ((*lista)->al != NULL)
+    {
+        temp = *lista;
+        *lista = (*lista)->prox;
+        free(temp);
+    }
+    free(*lista);
+    *lista = NULL;
+}
 
 Hash *hash_cria()
 {
@@ -29,8 +79,6 @@ Hash *hash_cria()
 
 void hash_libera(Hash **hashtable)
 {
-    int cont;
-    int tam = (*hashtable)->tam;
     free(*hashtable);
     *hashtable = NULL;
 }
