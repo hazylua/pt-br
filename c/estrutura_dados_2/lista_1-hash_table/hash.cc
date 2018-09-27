@@ -1,5 +1,11 @@
 #include "hash.h"
 
+struct lista {
+    Alunos *al;
+    Alunos *prox;
+    Alunos *ant;
+}
+
 struct hash
 {
     list<Alunos *> *dados;
@@ -29,17 +35,23 @@ void hash_libera(Hash **hashtable)
     *hashtable = NULL;
 }
 
-int inserir(Hash *hashtable, int matricula, char const *nome)
+int inserir(Hash *hashtable_nome, Hash *hashtable_matr, int matricula, char const *nome)
 {
     Alunos *al = (Alunos *)malloc(sizeof(Alunos));
     al->nome = (char *)malloc(strlen(nome));
     strcpy(al->nome, nome);
     al->matricula = matricula;
 
-    int index = hashing(matricula, hashtable->tam);
-    printf("Index: %d\n", index);
-    hashtable->dados[index].push_back(al);
-    hashtable->qtd++;
+    int index1 = hashing(matricula, TABELA_TAM);
+    int index2 = hashing(string_key(al->nome), TABELA_TAM);
+
+    printf("Index: %d\n", index1);
+    printf("Index: %d\n", index2 );
+
+    hashtable_nome->dados[index1].push_back(al);
+    hashtable_matr->dados[index2].push_back(al);
+    hashtable_nome->qtd++;
+    hashtable_matr->qtd++;
 
     return 1;
 }
@@ -65,6 +77,17 @@ int hashing(int chave, int tabela_tam)
     float val = chave * A;
     val = val - (int)val;
     return (int)(tabela_tam * val);
+}
+
+int string_key(char *str)
+{
+    int i, valor = 7;
+    int tam = strlen(str);
+    for( i = 0; i < tam; i++ ){
+        valor = valor * 11 + (int) str[i];
+    }
+
+    return valor;
 }
 
 int sondagem_linear(int pos, int i, int tabela_tam)

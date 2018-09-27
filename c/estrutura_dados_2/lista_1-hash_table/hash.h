@@ -15,6 +15,7 @@ struct dados{
     char *nome;
     int matricula;
 };
+typedef struct lista lista;
 typedef struct dados Alunos;
 typedef struct hash Hash;
 
@@ -25,12 +26,12 @@ Hash *hash_cria();
 void hash_libera( Hash ** );
 
 //Hashing por multiplicação.
-int inserir( Hash *, int, char const * );
+int inserir( Hash *, Hash *, int, char const * );
 int buscar( Hash *, int );
 int hashing( int, int );
+int string_key(char *);
 
 //Tratamento de colisões.
-
 //Endereçamento aberto por sondagem linear.
 int sondagem_linear( int, int, int );
 //Endereçamento aberto por sondagem quadrática.
