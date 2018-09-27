@@ -3,6 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <list>
+
+using namespace std;
 
 #define TABELA_TAM 101
 
@@ -12,13 +16,6 @@ struct dados{
     int matricula;
 };
 typedef struct dados Alunos;
-
-struct hash{
-
-    Alunos **dados;
-    int qtd;
-    int tam;
-};
 typedef struct hash Hash;
 
 //Alocação da tabela hash.
@@ -28,7 +25,7 @@ Hash *hash_cria();
 void hash_libera( Hash ** );
 
 //Hashing por multiplicação.
-int inserir( Hash *, int, char * );
+int inserir( Hash *, int, char const * );
 int buscar( Hash *, int );
 int hashing( int, int );
 

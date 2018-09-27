@@ -1,0 +1,85 @@
+#include "hash.h"
+
+struct hash
+{
+    list<Alunos *> *dados;
+    int qtd;
+    int tam;
+};
+
+Hash *hash_cria()
+{
+    Hash *hashtable = (Hash *)malloc(sizeof(Hash));
+
+    if (hashtable)
+    {
+        hashtable->qtd = 0;
+        hashtable->tam = TABELA_TAM;
+        hashtable->dados = new list<Alunos *>[TABELA_TAM];
+    }
+
+    return hashtable;
+}
+
+void hash_libera(Hash **hashtable)
+{
+    int cont;
+    int tam = (*hashtable)->tam;
+    free(*hashtable);
+    *hashtable = NULL;
+}
+
+int inserir(Hash *hashtable, int matricula, char const *nome)
+{
+    Alunos *al = (Alunos *)malloc(sizeof(Alunos));
+    al->nome = (char *)malloc(strlen(nome));
+    strcpy(al->nome, nome);
+    al->matricula = matricula;
+
+    int index = hashing(matricula, hashtable->tam);
+    printf("Index: %d\n", index);
+    hashtable->dados[index].push_back(al);
+    hashtable->qtd++;
+
+    return 1;
+}
+
+int buscar(Hash *hashtable, int matricula)
+{
+    Alunos *al;
+    int index = hashing(matricula, hashtable->tam);
+    printf("Index: %d\n", index);
+    if (hashtable->dados[index].size())
+    {
+        al = hashtable->dados[index].back();
+        printf("Matricula: %d\n", al->matricula);
+        return 1;
+    }
+    printf("Aluno não encontrado!\n");
+    return 0;
+}
+
+int hashing(int chave, int tabela_tam)
+{
+    float A = 0.6180339887;
+    float val = chave * A;
+    val = val - (int)val;
+    return (int)(tabela_tam * val);
+}
+
+int sondagem_linear(int pos, int i, int tabela_tam)
+{
+    return ((pos + i) & 0x7FFFFFFF) % tabela_tam;
+}
+
+int sondagem_quadratica(int pos, int i, int tabela_tam)
+{
+    pos = pos + (2 * i) + (5 * i * i);
+    return (pos & 0x7FFFFFFF) % tabela_tam;
+}
+
+int duplo_hash(int hash_1, int chave, int i, int tabela_tam)
+{
+    int hash_2 = hashing(chave, tabela_tam - 1) + 1;
+    return ((hash_1 + (i * hash_2)) & 0x7FFFFFFF) % tabela_tam;
+}

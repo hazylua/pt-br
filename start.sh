@@ -1,19 +1,19 @@
 #!/bin/bash
-echo "Testando..."
+echo "+---+ START.SH +---+"
 
 _isRunning() {
     pgrep -x "$1" > /dev/null
 }
 
-if [ ! -f ./arquivo_1.txt ]; then
-    touch arquivo_1.txt
-    ls
+if [ ! -f ../arquivo_1.txt ]; then
+    touch ../arquivo_1.txt
+    ls ../
 fi
 
 while _isRunning gedit; do
-    ls
-    sleep 1
+    echo "sleeping"
+    sleep 5
 done
 
-rm -r arquivo_1.txt
-ls
+rm -r ../arquivo_1.txt
+ls ../
