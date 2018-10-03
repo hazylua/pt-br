@@ -39,12 +39,30 @@ int lista_insere( Lista *l, int matricula, char const *nome )
     }
     else
     {
+        printf( "teste1\n" );
         while( temp->prox != NULL ) temp = temp->prox;
         temp->prox = novo;
         novo->ant = temp;
         return 1;
     }
     return 0;
+}
+
+Hash *hash_cria()
+{
+    Hash *hashtable = (Hash *)malloc(sizeof(Hash));
+
+    if (hashtable)
+    {
+        printf( "teste\n" );
+        hashtable->qtd = 0;
+        hashtable->tam = TABELA_TAM;
+        hashtable->dados = new list<Alunos *>[TABELA_TAM];
+        // if( hashtable->dados == NULL )
+        //     printf( "dados = null\n" );
+    }
+
+    return hashtable;
 }
 
 void lista_libera( Lista **lista )
@@ -61,20 +79,6 @@ void lista_libera( Lista **lista )
     *lista = NULL;
 }
 
-Hash *hash_cria()
-{
-    Hash *hashtable = (Hash *)malloc(sizeof(Hash));
-
-    if (hashtable)
-    {
-        hashtable->qtd = 0;
-        hashtable->tam = TABELA_TAM;
-        hashtable->dados = new list<Alunos *>[TABELA_TAM];
-    }
-
-    return hashtable;
-}
-
 void hash_libera(Hash **hashtable)
 {
     free(*hashtable);
@@ -83,6 +87,7 @@ void hash_libera(Hash **hashtable)
 
 int inserir(Hash *hashtable_nome, Hash *hashtable_matr, int matricula, char const *nome)
 {
+    printf( "teste.\n" );
     Alunos *al = (Alunos *)malloc(sizeof(Alunos));
     al->nome = (char *)malloc(strlen(nome));
     strcpy(al->nome, nome);

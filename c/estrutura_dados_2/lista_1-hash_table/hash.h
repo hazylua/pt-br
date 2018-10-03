@@ -10,17 +10,16 @@ using namespace std;
 
 #define TABELA_TAM 101
 
-struct dados
+typedef struct dados
 {    
     char *nome;
     int matricula;
     int nota_1;
     int nota_2;
     int nota_3;
-};
+} Alunos; 
 
 typedef struct lista Lista;
-typedef struct dados Alunos;
 typedef struct hash Hash;
 
 Lista *lista_cria();
