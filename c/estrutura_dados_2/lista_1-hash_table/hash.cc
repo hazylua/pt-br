@@ -28,15 +28,12 @@ int lista_insere( Lista *l, int matricula, char const *nome )
     Lista *novo = lista_cria();
     Lista *temp = l;
 
-    if((*novo)->al->matricula)
-
-    novo->al->nome = (char *)malloc(strlen(nome));
-    strcpy(novo->al->nome, nome);
-    novo->al->matricula = matricula;
-
     if( l->prox == NULL && l->ant == NULL )
     {
-        l = novo;
+        l->al->matricula = matricula;
+        printf("teste\n");
+        l->al->nome = (char *)malloc(strlen(nome));
+        strcpy(l->al->nome, nome); 
         return 1;
     }
     else
@@ -94,7 +91,7 @@ int inserir(Hash *hashtable_nome, Hash *hashtable_matr, int matricula, char cons
     int index2 = hashing(string_key(al->nome), TABELA_TAM);
 
     printf("Index: %d\n", index1);
-    printf("Index: %d\n", index2 );
+    printf("Index: %d\n", index2);
 
     hashtable_nome->dados[index1].push_back(al);
     hashtable_matr->dados[index2].push_back(al);

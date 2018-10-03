@@ -9,6 +9,7 @@ int main()
     Hash *hashtable_nome;
     Hash *hashtable_matr;
     Lista *lista;
+
     while( 1 )
     {
         op = menu_escolha();
@@ -36,7 +37,6 @@ int main()
             case 2:
             {
                 lista_insere( lista, 2017001, "Yago" );
-                printf("testestetete\n");
                 inserir(hashtable_nome, hashtable_matr, 2017001, "Yago" );
             } break;
 

@@ -1,5 +1,10 @@
+//Pastas:
 .*
+!.vscode
+
+//Arquivos:
 *.zip
 *.exe
-# Verbose:
+
+//Outros:
 !/.gitignore
