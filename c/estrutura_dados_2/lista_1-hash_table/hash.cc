@@ -1,6 +1,7 @@
 #include "hash.h"
 
-struct lista {
+struct lista
+{
     Alunos *al;
     Lista *prox;
     Lista *ant;

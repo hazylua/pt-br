@@ -1,53 +1,75 @@
 #include "hash.h"
 
+int menu();
 void clean_stdin();
-int menu_escolha ();
 
 int main()
 {
-    int op;
+    printf(
+        "\n+++ Implementação de Tabela Hash e suas Funções +++\n"
+    );
+
+    int escolha;
     Hash *hashtable_nome;
     Hash *hashtable_matr;
     Lista *lista;
 
-    while( 1 )
+    while( true )
     {
-        op = menu_escolha();
-        switch( op ) {
+        escolha = menu();
+        switch( escolha )
+        {
             default:
             {
-                printf ("> Tente novamente.\n");
-                clean_stdin ();
+                printf( "Tente novamente.\n" );
+                clean_stdin();
             } break;
 
             case 0:
             {
-                lista = lista_cria();
-                hashtable_nome = hash_cria();
-                hashtable_matr = hash_cria();
+                printf( "Até a próxima.\n" );
+                return 0;
             } break;
 
             case 1:
             {
-                lista_libera(&lista);
-                hash_libera(&hashtable_nome);
-                hash_libera(&hashtable_matr);
+                hashtable_nome = hash_cria();
+                hashtable_matr = hash_cria();
+                printf( "Tabelas criadas.\n" );
             } break;
 
             case 2:
             {
-                lista_insere( lista, 2017001, "Yago" );
-                inserir(hashtable_nome, hashtable_matr, 2017001, "Yago" );
+                lista = lista_cria();
+                printf( "Listas criadas.\n" );
             } break;
 
             case 3:
             {
-                buscar(hashtable_nome, 2017001);
+                lista_insere( lista, 2017001, "Aluno 1" );
+                inserir( hashtable_nome, hashtable_matr, 2017001, "Aluno 1" );
+                printf ( "Valores inseridos em ambas tabelas e lista.\n" );
             } break;
 
-            case 4:
+            // case 3:
+            // {
+            //     buscar( hashtable_nome, 2017001 );
+            // } break;
+
+            // case 4:
+            // {
+            //     buscar( hashtable_matr, 2017001 );
+            // } break;
+
+            case 9:
             {
-                buscar(hashtable_matr, 2017001);
+                hash_libera( &hashtable_nome );
+                hash_libera( &hashtable_matr );
+            } break;
+
+            case 10:
+            {
+                lista_libera( &lista );
             } break;
         }    
     }
@@ -55,21 +77,24 @@ int main()
     return 0;
 }
 
-int menu_escolha ()
+int menu()
 {
+    printf(
+        "Menu de comandos: \n"
+        "0. Sair do programa.\n"
+        "1. Criar tabelas.\n"
+        "2. Criar listas.\n"
+        "3. Inserir valores predefinidos nas tabelas e lista.\n"
+        "9. Liberar tabelas.\n"
+        "10. Liberar listas.\n"
+    );
+
     int escolha;
 
-    printf ("\n* Menu de comandos: \n");
-    printf ("0. Criar tabelas\n");
-    printf ("1. Liberar tabelas\n");
-    printf ("2. Inserir\n");
-    printf ("3. Busca nome\n");
-    printf ("4. Busca matricula\n");
+    printf( "Escolha: " );
+    scanf( "%d", &escolha );
 
-    printf ("\n> Escolha: ");
-    scanf ("%d", &escolha);
-    printf ("\n");
-
+    system( "cls" );
     return escolha;
 }
 
