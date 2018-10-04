@@ -1,4 +1,4 @@
-#Template: https://github.com/github/gitignore/blob/master/C.gitignore
+# Template: https://github.com/github/gitignore/blob/master/C.gitignore
 
 # Prerequisites
 *.d
@@ -53,15 +53,15 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-//Pastas:
+# Meu .gitignore:
+# Pastas:
 bin/
 .*
 !.vscode
 
-//Arquivos:
+# Arquivos:
 *.zip
 *.exe
-exe
 
-//Outros:
+# Outros:
 !/.gitignore
