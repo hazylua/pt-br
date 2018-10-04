@@ -1,10 +1,12 @@
 //Pastas:
 .*
 !.vscode
+bin/
 
 //Arquivos:
 *.zip
 *.exe
+exe.*
 
 //Outros:
 !/.gitignore
