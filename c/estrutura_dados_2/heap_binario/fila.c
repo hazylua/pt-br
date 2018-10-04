@@ -34,39 +34,41 @@ int procura(FilaPrio *fila1, Paciente paciente)
     return 1;
 }
 
-void liberar_fila(FilaPrio **fila)
+void liberar_fila( FilaPrio **fila )
 {
-    free(*fila);
+    free( *fila );
     *fila = NULL;
 }
 
-int fila_tamanho(FilaPrio *fila)
+int fila_tamanho( FilaPrio *fila )
 {
-    if(fila == NULL)
+    if( fila == NULL )
         return -1;
     return fila->qtd;
 }
 
-int fila_vazia(FilaPrio *fila)
+int fila_vazia( FilaPrio *fila )
 {
-    if(fila == NULL)
+    if( fila == NULL )
         return -1;
+    
     return (fila->qtd == 0);
 }
 
-int fila_cheia(FilaPrio *fila)
+int fila_cheia( FilaPrio *fila )
 {
-    if(fila == NULL)
+    if( fila == NULL )
         return -1;
-    return (fila->qtd == MAX);
+
+    return ( fila->qtd == MAX );
 }
 
-void fila_promover(FilaPrio *fila, int filho)
+void fila_promover( FilaPrio *fila, int filho )
 {
     int pai;
     Paciente temp;
     pai = (filho - 1) / 2;
-    while ((filho > 0) && (fila->dados[pai].prio <= fila->dados[filho].prio))
+    while ( (filho > 0) && (fila->dados[pai].prio <= fila->dados[filho].prio) )
     {
         temp = fila->dados[filho];
         fila->dados[filho] = fila->dados[pai];
@@ -77,14 +79,15 @@ void fila_promover(FilaPrio *fila, int filho)
     } 
 }
 
-int fila_inserir(FilaPrio *fila, char *nome, int prio)
+int fila_inserir( FilaPrio *fila, char *nome, int prio )
 {
-    if(fila == NULL)
+    if( fila == NULL )
         return -1;
-    if(fila->qtd == MAX)
+
+    if( fila->qtd == MAX )
         return 0;
     
-    strcpy(fila->dados[fila->qtd].nome, nome);
+    strcpy( fila->dados[fila->qtd].nome, nome );
     fila->dados[fila->qtd].prio = prio;
     fila_promover (fila, fila->qtd);
     fila->qtd++;
@@ -92,16 +95,16 @@ int fila_inserir(FilaPrio *fila, char *nome, int prio)
     return 1;
 }
 
-void fila_rebaixar(FilaPrio *fila, int pai)
+void fila_rebaixar( FilaPrio *fila, int pai )
 {
     Paciente temp;
     int filho = (2 * pai) + 1;
-    while(filho < fila->qtd)
+    while( filho < fila->qtd )
     {
-        if(filho < fila->qtd-1)
-            if(fila->dados[filho].prio < fila->dados[filho+1].prio)
+        if( filho < fila->qtd-1 )
+            if( fila->dados[filho].prio < fila->dados[filho+1].prio )
                 filho++;
-        if(fila->dados[pai].prio >= fila->dados[filho].prio)
+        if( fila->dados[pai].prio >= fila->dados[filho].prio )
             break;
         
         temp = fila->dados[pai];
@@ -113,16 +116,16 @@ void fila_rebaixar(FilaPrio *fila, int pai)
     }
 }
 
-int fila_remover(FilaPrio *fila)
+int fila_remover( FilaPrio *fila )
 {
-    if(fila == NULL)
+    if( fila == NULL )
         return -1;
-    if(fila->qtd == 0)
+    if( fila->qtd == 0 )
         return 0;
 
     fila->qtd--;
     fila->dados[0] = fila->dados[fila->qtd];
-    fila_rebaixar(fila, 0);
+    fila_rebaixar( fila, 0 );
 
     return 1;
 }
