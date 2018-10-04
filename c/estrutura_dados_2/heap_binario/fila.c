@@ -3,22 +3,22 @@
 FilaPrio *criar_fila()
 {
     FilaPrio *fila;
-    fila = malloc(sizeof(FilaPrio));
-    if(fila != NULL)
+    fila = ( FilaPrio * ) malloc( sizeof( FilaPrio ) );
+    if( fila != NULL )
         fila->qtd = 0;
+
     return fila;
 }
 
-void mergeHeap(FilaPrio* fila1, FilaPrio* fila2, int index)
+void merge_heap( FilaPrio* fila1, FilaPrio* fila2, int index )
 {
     if ( index < 0 ){
         return;
     } else {
-        printf("%d Resultado\n", procura(fila1, fila2->dados[index]));
         if(procura(fila1, fila2->dados[index])){
             fila_inserir(fila1, fila2->dados[index].nome, fila2->dados[index].prio);
         }
-        mergeHeap(fila1, fila2, index-1);
+        merge_heap(fila1, fila2, index-1);
     }
 
 }
@@ -89,7 +89,7 @@ int fila_inserir( FilaPrio *fila, char *nome, int prio )
     
     strcpy( fila->dados[fila->qtd].nome, nome );
     fila->dados[fila->qtd].prio = prio;
-    fila_promover (fila, fila->qtd);
+    fila_promover ( fila, fila->qtd );
     fila->qtd++;
 
     return 1;

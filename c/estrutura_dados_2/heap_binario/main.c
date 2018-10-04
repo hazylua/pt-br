@@ -6,31 +6,44 @@ void mostrar_fila(FilaPrio *fila);
 
 int main()
 {
-    FilaPrio *fila = criar_fila();
+    FilaPrio *fila1 = criar_fila();
 
     FilaPrio *fila2 = criar_fila();
 
     char nome[30];
 
     int i;
-    for(i = 0; i < NUM_PACIENTES; i++)
+    for(i = 2; i < NUM_PACIENTES+2; i++)
     {
-        sprintf(nome, "P%d", i);
-
-        fila_inserir(fila2, "Joao", NUM_PACIENTES+i);
-        fila_inserir(fila, nome, NUM_PACIENTES+i);
-
+        sprintf(nome, "A%d", i);
+        fila_inserir(fila1, nome, NUM_PACIENTES+i);
         nome[0] = '\0';
     }
-    
-    
-    printf("%d\n", fila_tamanho(fila));
-    mergeHeap(fila, fila2, fila_tamanho(fila2)-1);
-    liberar_fila(&fila2);
+    for(i = 0; i < NUM_PACIENTES; i++)
+    {
+        sprintf(nome, "B%d", i);
+        fila_inserir(fila2, nome, NUM_PACIENTES+i);
+        nome[0] = '\0';
+    }
+
+    mostrar_fila( fila1 );
+    mostrar_fila( fila2 );
+
+    merge_heap( fila1, fila2, fila_tamanho(fila2)-1 );
+    liberar_fila( &fila2 );
     nome[0] = '\0';
 
-    mostrar_fila(fila);
-    liberar_fila(&fila);
+    Paciente teste;
+    teste.nome[30] = "A3";
+    teste.prio = 3;
+
+    if( procura(fila1, teste) == 1)
+        printf( "Paciente existe na fila.\n" );
+    else
+        printf( "Paciente não existe na fila.\n" );
+
+    mostrar_fila( fila1 );
+    liberar_fila( &fila1 );
     return 0;
 }
 
