@@ -6,4 +6,8 @@ echo
 git config user.name $username
 git config user.email $usermail
 echo "-> Exibição das configurações do repositório: "
-cat .git/config 
+git config user.name
+git config user.email
+echo "-> Exibição das configurações globais: "
+git config --global user.name
+git config --global user.email
