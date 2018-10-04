@@ -1,7 +1,7 @@
 //Pastas:
+bin/
 .*
 !.vscode
-bin/
 
 //Arquivos:
 *.zip
