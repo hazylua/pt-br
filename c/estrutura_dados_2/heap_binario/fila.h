@@ -17,12 +17,14 @@ typedef struct fila_prioridade
 } FilaPrio;
 
 FilaPrio *criar_fila();
-int procura( FilaPrio*, Paciente );
-void merge_heap( FilaPrio*, FilaPrio*, int );
 void liberar_fila( FilaPrio **fila );
+void merge_heap( FilaPrio*, FilaPrio*, int );
+int procura( FilaPrio*, Paciente );
+
 int fila_tamanho( FilaPrio *fila );
 int fila_vazia( FilaPrio *fila );
 int fila_cheia( FilaPrio *fila );
+
 void fila_promover( FilaPrio *fila, int filho );
 int fila_inserir( FilaPrio *fila, char *nome, int prio );
 void fila_rebaixar( FilaPrio *fila, int pai );

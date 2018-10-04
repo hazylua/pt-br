@@ -10,6 +10,12 @@ FilaPrio *criar_fila()
     return fila;
 }
 
+void liberar_fila( FilaPrio **fila )
+{
+    free( *fila );
+    *fila = NULL;
+}
+
 void merge_heap( FilaPrio* fila1, FilaPrio* fila2, int index )
 {
     if ( index < 0 ){
@@ -34,12 +40,8 @@ int procura(FilaPrio *fila1, Paciente paciente)
     return 1;
 }
 
-void liberar_fila( FilaPrio **fila )
-{
-    free( *fila );
-    *fila = NULL;
-}
 
+// Verificação do tamanho e da quantidade de elementos da fila:
 int fila_tamanho( FilaPrio *fila )
 {
     if( fila == NULL )
@@ -63,6 +65,23 @@ int fila_cheia( FilaPrio *fila )
     return ( fila->qtd == MAX );
 }
 
+// Inserção e promoção de elementos:
+int fila_inserir( FilaPrio *fila, char *nome, int prio )
+{
+    if( fila == NULL )
+        return -1;
+
+    if( fila->qtd == MAX )
+        return 0;
+    
+    strcpy( fila->dados[fila->qtd].nome, nome );
+    fila->dados[fila->qtd].prio = prio;
+    fila_promover ( fila, fila->qtd );
+    fila->qtd++;
+
+    return 1;
+}
+
 void fila_promover( FilaPrio *fila, int filho )
 {
     int pai;
@@ -79,18 +98,17 @@ void fila_promover( FilaPrio *fila, int filho )
     } 
 }
 
-int fila_inserir( FilaPrio *fila, char *nome, int prio )
+// Remoção e rebaixamento de elementos:
+int fila_remover( FilaPrio *fila )
 {
     if( fila == NULL )
         return -1;
-
-    if( fila->qtd == MAX )
+    if( fila->qtd == 0 )
         return 0;
-    
-    strcpy( fila->dados[fila->qtd].nome, nome );
-    fila->dados[fila->qtd].prio = prio;
-    fila_promover ( fila, fila->qtd );
-    fila->qtd++;
+
+    fila->qtd--;
+    fila->dados[0] = fila->dados[fila->qtd];
+    fila_rebaixar( fila, 0 );
 
     return 1;
 }
@@ -114,18 +132,4 @@ void fila_rebaixar( FilaPrio *fila, int pai )
         pai = filho;
         filho = (2 * pai) + 1;
     }
-}
-
-int fila_remover( FilaPrio *fila )
-{
-    if( fila == NULL )
-        return -1;
-    if( fila->qtd == 0 )
-        return 0;
-
-    fila->qtd--;
-    fila->dados[0] = fila->dados[fila->qtd];
-    fila_rebaixar( fila, 0 );
-
-    return 1;
 }
