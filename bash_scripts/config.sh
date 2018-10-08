@@ -1,13 +1,11 @@
 #!/bin/bash
-echo "+---+ CONFIG.SH +---+"
-read -p '-> Github user name: ' username
-read -p '-> Github user email: ' usermail
-echo
+read -p "Usuário do Github: " username
+read -p "Email do Github: " usermail
 git config user.name $username
 git config user.email $usermail
-echo "-> Exibição das configurações do repositório: "
+echo -n -e "\nConfigurações do repositório:\n"
 git config user.name
 git config user.email
-echo "-> Exibição das configurações globais: "
+echo -n -e "\nConfigurações globais:\n"
 git config --global user.name
 git config --global user.email
