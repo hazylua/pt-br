@@ -97,7 +97,7 @@ void fila_promover( FilaPrio *fila, int filho )
     int pai;
     Paciente temp;
     pai = (filho - 1) / 2;
-    while ( (filho > 0) && (fila->dados[pai].prio <= fila->dados[filho].prio) )
+    while ( (filho > 0 ) && ( fila->dados[pai].prio <= fila->dados[filho].prio ) )
     {
         temp = fila->dados[filho];
         fila->dados[filho] = fila->dados[pai];
@@ -113,6 +113,7 @@ int fila_remover( FilaPrio *fila )
 {
     if( fila == NULL )
         return -1;
+
     if( fila->qtd == 0 )
         return 0;
 
@@ -132,7 +133,7 @@ void fila_rebaixar( FilaPrio *fila, int pai )
         if( filho < fila->qtd-1 )
             if( fila->dados[filho].prio < fila->dados[filho+1].prio )
                 filho++;
-                
+
         if( fila->dados[pai].prio >= fila->dados[filho].prio )
             break;
         
