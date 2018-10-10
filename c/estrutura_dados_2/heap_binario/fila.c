@@ -1,5 +1,6 @@
 #include "fila.h"
 
+// Inicialização, liberação e merge de filas:
 FilaPrio *criar_fila()
 {
     FilaPrio *fila;
@@ -16,36 +17,43 @@ void liberar_fila( FilaPrio **fila )
     *fila = NULL;
 }
 
-void merge_heap( FilaPrio* fila1, FilaPrio* fila2, int index )
+// A fila 1 será a fila com os novos elementos após o merge.
+void merge_heap( FilaPrio* fila_1, FilaPrio* fila_2, int index )
 {
-    if ( index < 0 ){
+    if( index < 0 )
         return;
-    } else {
-        if(procura(fila1, fila2->dados[index])){
-            fila_inserir(fila1, fila2->dados[index].nome, fila2->dados[index].prio);
-        }
-        merge_heap(fila1, fila2, index-1);
-    }
 
+    else
+    {
+        if( fila_1->qtd == MAX)
+            return;
+        
+        if( procura( fila_1, fila_2->dados[index] ) != 0 )
+            fila_inserir( fila_1, fila_2->dados[index].nome, fila_2->dados[index].prio );
+        merge_heap( fila_1, fila_2, index-1 );
+    }
 }
 
-int procura(FilaPrio *fila1, Paciente paciente)
+// Procura na fila. Caso encontrar alguém com o mesmo nome na fila, retorna 0, indicando que não é necessário inserí-lo na fila pois ele já existe nela. Caso contrário, retorna 1, indicando que é possível inserí-lo. 
+// Procura por nome:
+int procura( FilaPrio *fila, Paciente paciente )
 {
     int i;
-    for ( i = 0; i < fila1->qtd; i++ ){
-        if (!strcmp(fila1->dados[i].nome, paciente.nome)){
-            return 0;            
-        }
+    for ( i = 0 ; i < fila->qtd ; i++ )
+    {
+        if( strcmp( fila->dados[i].nome, paciente.nome ) == 0 )
+            return 0;
     }
+
     return 1;
 }
-
 
 // Verificação do tamanho e da quantidade de elementos da fila:
 int fila_tamanho( FilaPrio *fila )
 {
     if( fila == NULL )
         return -1;
+
     return fila->qtd;
 }
 
@@ -54,7 +62,8 @@ int fila_vazia( FilaPrio *fila )
     if( fila == NULL )
         return -1;
     
-    return (fila->qtd == 0);
+    // Caso esteja vazia (qtd = 0), retorna 1, senão retorna 0.
+    return ( fila->qtd == 0 );
 }
 
 int fila_cheia( FilaPrio *fila )
@@ -62,6 +71,7 @@ int fila_cheia( FilaPrio *fila )
     if( fila == NULL )
         return -1;
 
+    // Caso esteja cheia (qtd = MAX), retorna 1, senão retorna 0.
     return ( fila->qtd == MAX );
 }
 
@@ -122,6 +132,7 @@ void fila_rebaixar( FilaPrio *fila, int pai )
         if( filho < fila->qtd-1 )
             if( fila->dados[filho].prio < fila->dados[filho+1].prio )
                 filho++;
+                
         if( fila->dados[pai].prio >= fila->dados[filho].prio )
             break;
         
