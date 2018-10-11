@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "hash.h"
 
+
 int main()
 {
     Hash *p = NULL;
@@ -9,7 +10,7 @@ int main()
     a = ( Aluno* ) malloc( sizeof( Aluno ) );
 
     int op = 1, tam;
-    while(op)
+    while( op )
     {
         printf(
             "0 - Sair do programa.\n"
