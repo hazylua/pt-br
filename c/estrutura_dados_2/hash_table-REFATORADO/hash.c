@@ -2,36 +2,6 @@
 #include "string.h"
 #include "stdlib.h"
 
-struct hash
-{
-    int qtd;
-    int qtd_2;
-    int tam;
-    Lista *lista;
-    Node_hash **tabela_1;
-    Node_hash **tabela_2;
-};
-
-typedef struct node1
-{
-    Node *info;
-    Node_hash *prox;
-} Node_hash;
-
-typedef struct lista
-{
-    int tam;
-    Node *inicio;
-    Node *final;
-} Lista;
-
-typedef struct node
-{
-    Aluno dado;
-    Node *prox;
-    Node *ant;
-} Node;
-
 //Cria tabela hash.
 Hash *cria_hash( int n )
 {
@@ -188,7 +158,7 @@ int hash_calc( int mat, int tam )
     return chave_multi( mat, tam );
 }
 
-int hash_busca( Hash *hash, int mat, Aluno *al )
+int hash_busca_matricula( Hash *hash, int mat, Aluno *al )
 {
     //Verificação:
     if( hash == NULL || hash->qtd == 0 ) 

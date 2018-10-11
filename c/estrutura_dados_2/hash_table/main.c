@@ -12,16 +12,16 @@ int main()
     int op = 1, tam;
     while( op )
     {
-        printf(
-            "0 - Sair do programa.\n"
-            "1 - Cria Hash\n"
-            "2 - Libera Hash\n"
-            "3 - Adiciona\n"
-            "4 - Busca por matricula\n"
-            "5 - Busca por nome\n"
-            "6 - Imprime\n"
-            "7 - Remove\n"
-        );
+        // printf(
+        //     "0 - Sair do programa.\n"
+        //     "1 - Cria Hash\n"
+        //     "2 - Libera Hash\n"
+        //     "3 - Adiciona\n"
+        //     "4 - Busca por matricula\n"
+        //     "5 - Busca por nome\n"
+        //     "6 - Imprime\n"
+        //     "7 - Remove\n"
+        // );
         scanf("%d",&op);
 
         switch( op )
