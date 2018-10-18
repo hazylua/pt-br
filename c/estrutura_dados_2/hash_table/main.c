@@ -5,125 +5,56 @@
 
 int main()
 {
-    Hash *p = NULL;
-    Aluno d, *a;
-    a = ( Aluno* ) malloc( sizeof( Aluno ) );
+    Hash *tabela_hash = NULL;
+    Aluno *al = ( Aluno* ) malloc( sizeof( Aluno ) );
+    Aluno al_novo;
 
-    int op = 1, tam;
-    while( op )
+    //printf( "Defina o tamanho da tabela hash: " );
+    int tam;
+    scanf( "%d", &tam );
+    tabela_hash = cria_hash( tam );
+
+    //printf( "Defina o número de alunos a serem inseridos: " );
+    int i, qtd_alunos;
+    scanf( "%d", &qtd_alunos );
+    for( i = 0 ; i < qtd_alunos ; i++ )
     {
-        // printf(
-        //     "0 - Sair do programa.\n"
-        //     "1 - Cria Hash\n"
-        //     "2 - Libera Hash\n"
-        //     "3 - Adiciona\n"
-        //     "4 - Busca por matricula\n"
-        //     "5 - Busca por nome\n"
-        //     "6 - Imprime\n"
-        //     "7 - Remove\n"
-        // );
-        scanf("%d",&op);
-
-        switch( op )
-        {
-            case 1:
-            {
-                printf( "Opção escolhida: %d\n", op );
-
-                printf( "Defina o tamanho da tabela hash: " );
-                scanf( "%d", &tam );
-                p = cria_hash( tam );
-                if( p )
-                    printf( "Tabela criada.\n");
-                else
-                    printf("Erro.\n");
-            } break;
-
-            case 2:
-            {
-                printf( "Opção escolhida: %d\n", op );
-
-                if( libera_hash( &p ) )
-                    printf( "Tabela hash liberada.\n");
-                else
-                    printf( "Erro.\n" );
-            } break;
-
-            case 3:
-            {
-                printf( "Opção escolhida: %d\n", op );
-
-                printf( "Digite o nome: " );
-                scanf( " %[^\n]", d.nome );
-                fflush( stdin );
-                printf( "Informe a matricula: " );
-                scanf( "%d", &d.matricula );
-                printf( "Insira as notas 1, 2 e 3, respectivamente: ");
-                scanf( "%f%f%f", &d.nota_1, &d.nota_2, &d.nota_3 );
-                if( ! hash_busca( p, d.matricula, a) )
-                    if( hash_insere( p, d ) )
-                        printf( "Valores inseridos.\n");
-                    else
-                        printf( "Erro.\n" );
-                else
-                    printf( "Erro.\n" );
-            } break;
-
-            case 4:
-            {
-                printf( "Opção escolhida: %d\n", op );
-
-                printf( "Insira a matricula: " );
-                scanf( "%d", &d.matricula );
-                if( hash_busca( p, d.matricula, a ) )
-                {
-                    printf( "\n+++ RESULTADOS DA BUSCA +++\n\n") ;
-                    printf( "Nome: %s; Matrícula: %d; Nota 1: %0.1f; Nota 2: %0.1f; Nota 3: %0.1f\n",a->nome,a->matricula,a->nota_1,a->nota_2,a->nota_3 );
-                    printf( "\n+++ RESULTADOS DA BUSCA +++\n" );
-                } else
-                    printf( "Erro.\n" );
-            } break;
-
-            case 5:
-            {
-                printf( "Opção escolhida: %d\n", op );
-
-                printf( "Insira o nome: " );
-                fflush( stdin );
-                scanf( " %[^\n]",d.nome );
-                if( hash_busca_nome( p, d.nome, a ) )
-                {
-                    printf( "\n+++ RESULTADOS DA BUSCA +++\n\n") ;
-                    printf( "Nome: %s; Matrícula: %d; Nota 1: %0.1f; Nota 2: %0.1f; Nota 3: %0.1f\n",a->nome,a->matricula,a->nota_1,a->nota_2,a->nota_3 );
-                    printf( "\n+++ RESULTADOS DA BUSCA +++\n") ;
-                } else
-                    printf( "Erro.\n" );
-            } break;
-
-            case 6:
-            {
-                printf( "Opção escolhida: %d\n", op );
-
-                printf( "\n+++ VISUALIZAÇÃO DOS VALORES JÁ INSERIDOS +++\n\n");
-                imprime( p );
-                printf( "\n+++ VISUALIZAÇÃO DOS VALORES JÁ INSERIDOS +++\n");
-            } break;
-
-            case 7:
-            {
-                printf( "Opção escolhida: %d\n", op );
-
-                printf( "Insira a matricula: " );
-                scanf( "%d", &d.matricula );
-                if( hash_remove( p, d.matricula ) ) 
-                    printf( "Removido.\n" );
-                else
-                    printf( "Erro.\n" );
-            } break;
-        }
-        printf( "\n" );
+        //printf( "Informe o nome: " );
+        scanf( "%s", al_novo.nome );
+        //printf( "Informe a matricula: " );
+        scanf( "%d", &al_novo.matricula );
+        //printf( "Informe as notas 1, 2 e 3, respectivamente: " );
+        scanf( "%f%f%f", &al_novo.nota_1, &al_novo.nota_2, &al_novo.nota_3 );
+        
+        hash_insere( tabela_hash, al_novo );
     }
 
-    printf( "Até a próxima.\n" );
+    imprime( tabela_hash );
+
+    //printf( "Informe a matrícula a ser procurada: " );
+    int mat;
+    scanf( "%d", &mat );
+    hash_busca_matricula( tabela_hash, mat, al );
+    printf( "Resultado:\n"
+    "Nome: %s; Matrícula: %d; Nota 1: %0.2f; Nota 2: %0.2f; Nota 3: %0.2f\n", al->nome, al->matricula, al->nota_1, al->nota_2, al->nota_3 );
+
+    //printf( "Informe o nome a ser procurado: " );
+    char nome[MAX];
+    scanf( "%s", nome );
+    hash_busca_nome( tabela_hash, nome, al );
+    printf( "Resultado:\n"
+    "Nome: %s; Matrícula: %d; Nota 1: %0.2f; Nota 2: %0.2f; Nota 3: %0.2f\n", al->nome, al->matricula, al->nota_1, al->nota_2, al->nota_3 );
+
+    //printf( "Informa a matrícula a ser removida: " );
+    scanf( "%d", &mat );
+    if( hash_remove( tabela_hash, mat ) )
+        printf( "%d removido.\n", mat );
+
+
+
+
+
+    libera_hash( &tabela_hash );
+
     return 0;
 }
