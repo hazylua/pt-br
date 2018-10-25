@@ -2,7 +2,9 @@
 
 int main()
 {
-    
+    No **arv;
+    arv = arvore_criar();
+
 
     return 0;
 }
