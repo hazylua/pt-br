@@ -15,8 +15,8 @@ int main()
         aluno.nota_3 = 6.00;
         arvore_inserir( arv, aluno );
     }
-    arvore_exibir( *arv );
 
+    arvore_exibir( *arv );
 
     return 0;
 }
