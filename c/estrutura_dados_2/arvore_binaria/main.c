@@ -18,7 +18,7 @@ int main()
 
     arvore_exibir( *arv );
     printf( "Número de nós: %d\n", arvore_contarNos( *arv ) );
-
+    printf( "Altura da árvore: %d\n", arvore_altura( *arv ) );
 
     if ( arvore_vazia( *arv ) == 1 )
         printf( "Árvore vazia.\n" );

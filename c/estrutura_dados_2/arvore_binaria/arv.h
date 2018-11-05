@@ -19,9 +19,16 @@ typedef struct arvore{
 
 No **arvore_criar();
 int arvore_inserir( No **, Info );
-int arvore_exibir( No * );
+int arvore_exibirOrdem( No * );
+int arvore_exibirPreOrdem( No * );
+int arvore_exibirPosOrdem( No * );
 int arvore_vazia( No * );
 int arvore_contarNos( No * );
+int arvore_contarFolhas( No * );
+int arvore_contarNaoFolhas( No * );
 int arvore_altura( No * );
 int maior( int, int );
+int arvore_destroi( No ** );
+int arvore_desaloca( No ** );
+
 #endif

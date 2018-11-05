@@ -33,16 +33,44 @@ int arvore_inserir( No **arv, Info aluno )
     return 0;
 }
 
-int arvore_exibir( No *arv )
+int arvore_exibirOrdem( No *arv )
 {
     if( arv == NULL )
         return -1;
 
-    arvore_exibir( arv->esq );
+    arvore_exibirOrdem( arv->esq );
     printf( "MATRÍCULA = %d\n"
             "NOME = %s\n"
             "NOTAS: %0.2f, %0.2f, %0.2f\n\n", arv->aluno.matricula, arv->aluno.nome, arv->aluno.nota_1, arv->aluno.nota_2, arv->aluno.nota_3 );
-    arvore_exibir( arv->dir );
+    arvore_exibirOrdem( arv->dir );
+
+    return 1;
+}
+
+int arvore_exibirPreOrdem( No *arv )
+{
+    if( arv == NULL )
+        return -1;
+
+    printf( "MATRÍCULA = %d\n"
+            "NOME = %s\n"
+            "NOTAS: %0.2f, %0.2f, %0.2f\n\n", arv->aluno.matricula, arv->aluno.nome, arv->aluno.nota_1, arv->aluno.nota_2, arv->aluno.nota_3 );
+    arvore_exibirPreOrdem( arv->esq );
+    arvore_exibirPreOrdem( arv->dir );
+
+    return 1;
+}
+
+int arvore_exibirPosOrdem( No *arv )
+{
+    if( arv == NULL )
+        return -1;
+
+    arvore_exibirPosOrdem( arv->esq );
+    arvore_exibirPosOrdem( arv->dir );
+    printf( "MATRÍCULA = %d\n"
+            "NOME = %s\n"
+            "NOTAS: %0.2f, %0.2f, %0.2f\n\n", arv->aluno.matricula, arv->aluno.nome, arv->aluno.nota_1, arv->aluno.nota_2, arv->aluno.nota_3 );
 
     return 1;
 }
@@ -63,6 +91,26 @@ int arvore_contarNos( No *arv )
         return (1 + arvore_contarNos( arv->esq ) + arvore_contarNos( arv->dir ));
 }
 
+int arvore_contarFolhas( No *arv )
+{
+    if( arv == NULL )
+        return 0;
+    if( arv->esq == NULL && arv->dir == NULL )
+        return 1;
+
+    return arvore_contarFolhas( arv->esq ) + arvore_contarFolhas( arv->dir );
+}
+
+int arvore_contarNaoFolhas( No *arv )
+{
+    if( arv == NULL )
+        return 0;
+    if( arv->esq == NULL && arv->dir == NULL )
+        return 0;
+
+    return arvore_contarFolhas( arv->esq ) + arvore_contarFolhas( arv->dir );
+}
+
 int arvore_altura( No *arv )
 {
     if( arv == NULL )
@@ -77,4 +125,30 @@ int maior( int a, int b )
         return a;
     else
         return b;
+}
+
+int arvore_destroi( No **arv )
+{
+    if( arv_vazia( *arv ) != 1 )
+    {
+        arvore_desaloca( arv->esq );
+        arvore_desaloca( arv->dir );
+        free( arv );
+    }
+
+    return 1;
+}
+
+int arvore_desaloca( No **arv )
+{
+    if( arv_vazia( *arv ) != 1 )
+    {
+        arvore_desaloca( arv->esq );
+        arvore_desaloca( arv->dir );
+        free( arv );
+    }
+
+    arvore_criar( arv );
+
+    return 1;
 }
