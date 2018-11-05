@@ -20,5 +20,7 @@ typedef struct arvore{
 No **arvore_criar();
 int arvore_inserir( No **, Info );
 int arvore_exibir( No * );
+int arvore_vazia( No * );
+int arvore_contar( No* );
 
 #endif

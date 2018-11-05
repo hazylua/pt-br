@@ -35,7 +35,7 @@ int arvore_inserir( No **arv, Info aluno )
 
 int arvore_exibir( No *arv )
 {
-    if (arv == NULL )
+    if( arv == NULL )
         return -1;
 
     arvore_exibir( arv->esq );
@@ -47,3 +47,18 @@ int arvore_exibir( No *arv )
     return 1;
 }
 
+int arvore_vazia( No *arv )
+{
+    if( arv == NULL )
+        return 1;
+    else
+        return 0;
+}
+
+int arvore_contar( No *arv )
+{
+    if( arv == NULL )
+        return 0;
+    else
+        return (1 + arvore_contar( arv->esq ) + arvore_contar( arv->dir ));
+}

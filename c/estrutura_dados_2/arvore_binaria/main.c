@@ -17,6 +17,13 @@ int main()
     }
 
     arvore_exibir( *arv );
+    printf( "Número de nós: %d\n", arvore_contar( *arv ) );
+
+
+    if ( arvore_vazia( *arv ) == 1 )
+        printf( "Árvore vazia.\n" );
+    else
+        printf( "Árvore não vazia.\n" );
 
     return 0;
 }
