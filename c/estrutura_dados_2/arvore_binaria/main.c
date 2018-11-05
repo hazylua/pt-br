@@ -17,7 +17,7 @@ int main()
     }
 
     arvore_exibir( *arv );
-    printf( "Número de nós: %d\n", arvore_contar( *arv ) );
+    printf( "Número de nós: %d\n", arvore_contarNos( *arv ) );
 
 
     if ( arvore_vazia( *arv ) == 1 )

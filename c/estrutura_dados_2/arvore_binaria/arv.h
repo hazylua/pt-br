@@ -21,6 +21,7 @@ No **arvore_criar();
 int arvore_inserir( No **, Info );
 int arvore_exibir( No * );
 int arvore_vazia( No * );
-int arvore_contar( No* );
-
+int arvore_contarNos( No * );
+int arvore_altura( No * );
+int maior( int, int );
 #endif

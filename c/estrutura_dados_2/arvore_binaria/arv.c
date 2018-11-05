@@ -55,10 +55,26 @@ int arvore_vazia( No *arv )
         return 0;
 }
 
-int arvore_contar( No *arv )
+int arvore_contarNos( No *arv )
 {
     if( arv == NULL )
         return 0;
     else
-        return (1 + arvore_contar( arv->esq ) + arvore_contar( arv->dir ));
+        return (1 + arvore_contarNos( arv->esq ) + arvore_contarNos( arv->dir ));
+}
+
+int arvore_altura( No *arv )
+{
+    if( arv == NULL )
+        return 0;
+    else
+        return (1 + maior( arvore_altura( arv->esq ), arvore_altura( arv->dir ) ));
+}
+
+int maior( int a, int b )
+{
+    if( a > b )
+        return a;
+    else
+        return b;
 }
