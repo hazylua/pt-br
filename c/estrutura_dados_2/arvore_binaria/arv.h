@@ -28,7 +28,7 @@ int arvore_contarFolhas( No * );
 int arvore_contarNaoFolhas( No * );
 int arvore_altura( No * );
 int maior( int, int );
+int no_libera( No * );
 int arvore_destroi( No ** );
-int arvore_desaloca( No ** );
 
 #endif

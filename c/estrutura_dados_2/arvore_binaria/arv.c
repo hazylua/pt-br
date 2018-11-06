@@ -127,28 +127,21 @@ int maior( int a, int b )
         return b;
 }
 
-int arvore_destroi( No **arv )
+int no_libera( No *no )
 {
-    if( arv_vazia( *arv ) != 1 )
-    {
-        arvore_desaloca( arv->esq );
-        arvore_desaloca( arv->dir );
-        free( arv );
-    }
-
-    return 1;
+    if( no == NULL )
+        return 0;
+    no_libera( no->esq );
+    no_libera( no->dir );
+    free( no );
+    no = NULL;
 }
 
-int arvore_desaloca( No **arv )
+int arvore_destroi( No **arv )
 {
-    if( arv_vazia( *arv ) != 1 )
-    {
-        arvore_desaloca( arv->esq );
-        arvore_desaloca( arv->dir );
-        free( arv );
-    }
+    if( arv == NULL)
+        return 1;
 
-    arvore_criar( arv );
-
-    return 1;
+    no_libera( *arv );
+    free( arv );
 }
