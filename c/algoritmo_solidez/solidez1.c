@@ -5,7 +5,7 @@ int solidez( int*, int, int );
 
 int main()
 {
-    int vetor[5] = {0, -1, 1, 1, 1};
+    int vetor[5] = {-10, 20, -30, 20, 10};
     int resultado = solidez(vetor, 0, 5);
     printf( "%d\n", resultado );
 }
