@@ -1,4 +1,6 @@
 #!/bin/bash
+git config --global user.name "Pessoa"
+git config --global user.email "pessoa@exemplo.com"
 read -p "Usuário do Github: " username
 read -p "Email do Github: " usermail
 git config user.name $username
