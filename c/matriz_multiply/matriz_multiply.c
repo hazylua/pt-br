@@ -28,7 +28,7 @@ int matriz_multiply( int A[][2], int B[][2] )
     {
         for( j = 0 ; j < 2 ; j++ )
         {
-            printf( "%d ", C[i][j] );
+            printf( "%d", C[i][j] );
         }
         printf( "\n" );
     }
