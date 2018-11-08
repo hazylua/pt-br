@@ -1,12 +1,15 @@
 #include "arv.h"
 
-int menu( int );
+
+
+int menu( int * );
 
 int main()
 {
     int opcao;
     No **arv;
-    while( !menu( opcao ) )
+    srand(time(NULL));
+    while( menu(&opcao) )
     {
         switch( opcao )
         {
@@ -21,27 +24,27 @@ int main()
                 for( int i = 1 ; i <= 5 ; i++ )
                 {
                     snprintf( aluno.nome, 100, "Aluno %d", i );
-                    aluno.matricula = i;
-                    aluno.nota_1 = 6.00;
-                    aluno.nota_2 = 6.00;
-                    aluno.nota_3 = 6.00;
+                    aluno.matricula = rand()%100 + 10;
+                    aluno.nota_1 = rand()%4 + 6;
+                    aluno.nota_2 = rand()%4 + 6;
+                    aluno.nota_3 = rand()%4 + 6;
                     arvore_inserir( arv, aluno );
                 }
                 printf( "OK.\n" );
             } break;
             case 3:
             {
-                arvore_exibirOrdem( arv );
+                arvore_exibirOrdem( *arv );
                 printf( "OK.\n" );
             } break;
             case 4:
             {
-                arvore_exibirPreOrdem( arv );
+                arvore_exibirPreOrdem( *arv );
                 printf( "OK.\n" );
             } break;
             case 5:
             {
-                arvore_exibirPosOrdem( arv );
+                arvore_exibirPosOrdem( *arv );
                 printf( "OK.\n" );
             } break;
             case 6:
@@ -54,22 +57,22 @@ int main()
             } break;
             case 7:
             {
-                printf( "Número de nós: %d\n", arvore_contarNos( arv ) );
+                printf( "Número de nós: %d\n", arvore_contarNos( *arv ) );
                 printf( "OK.\n" );
             } break;
             case 8:
             {
-                printf( "Número de folhas: %d\n", arvore_contarFolhas( arv ) );
+                printf( "Número de folhas: %d\n", arvore_contarFolhas( *arv ) );
                 printf( "OK.\n" );
             } break;
             case 9:
             {
-                printf( "Número de nós não folha: %d\n", arvore_contarNaoFolhas( arv ) );
+                printf( "Número de nós não folha: %d\n", arvore_contarNaoFolhas( *arv ) );
                 printf( "OK.\n" );
             } break;
             case 10:
             {
-                printf( "Altura: %d\n", arvore_altura( arv ) );
+                printf( "Altura: %d\n", arvore_altura( *arv ) );
                 printf( "OK.\n" );
             } break;
             case 11:
@@ -79,11 +82,9 @@ int main()
             } break;
         }
     }
-
-    return 0;
 }
 
-int menu( int opcao )
+int menu( int *opcao )
 {
     printf(
             "0 - Sair do programa;\n"
@@ -97,10 +98,10 @@ int menu( int opcao )
             "8 - Contar número de nós folhas;\n"
             "9 - Contar número de nós não folhas;\n"
             "10 - Exibir altura da árvore;\n"
-            "11 - Detruir árvore;\n"
+            "11 - Destruir árvore;\n"
         );
         printf( "Opção: " );
-        scanf( "%d", &opcao );
+        scanf( "%d", opcao );
 
-    return opcao;
+    return *opcao;
 }

@@ -85,30 +85,31 @@ int arvore_vazia( No *arv )
 
 int arvore_contarNos( No *arv )
 {
-    if( arv == NULL )
-        return 0;
-    else
-        return (1 + arvore_contarNos( arv->esq ) + arvore_contarNos( arv->dir ));
+    if(arv==NULL) return 0;
+    else {
+        return 1 + arvore_contarNos(arv->esq) + arvore_contarNos(arv->dir );
+    }
+
 }
 
 int arvore_contarFolhas( No *arv )
 {
     if( arv == NULL )
         return 0;
-    if( arv->esq == NULL && arv->dir == NULL )
+    if( arv->esq == NULL && arv->dir == NULL)
         return 1;
-
-    return arvore_contarFolhas( arv->esq ) + arvore_contarFolhas( arv->dir );
+    else
+        return arvore_contarFolhas( arv->esq ) + arvore_contarFolhas( arv->dir );
 }
 
 int arvore_contarNaoFolhas( No *arv )
 {
-    if( arv == NULL )
+    if(arv == NULL)
         return 0;
-    if( arv->esq == NULL && arv->dir == NULL )
-        return 0;
-
-    return arvore_contarFolhas( arv->esq ) + arvore_contarFolhas( arv->dir );
+    else if( arv->esq != NULL || arv->dir != NULL )
+    {
+        return 1 + arvore_contarNaoFolhas(arv->esq) + arvore_contarNaoFolhas(arv->dir);
+    }
 }
 
 int arvore_altura( No *arv )
@@ -144,4 +145,13 @@ int arvore_destroi( No **arv )
 
     no_libera( *arv );
     free( arv );
+}
+
+int arvore_esvazia( No **arv )
+{
+    if( arv == NULL)
+        return 1;
+
+    no_libera( *arv );
+    *arv = NULL;
 }
