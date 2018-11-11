@@ -5,19 +5,34 @@ import (
 	"net/http"
 	"time"
 
+	//Implementação de WebSocket para Go.
 	"github.com/gorilla/websocket"
 )
 
 var upgrader = websocket.Upgrader{}
 
+//Define handler.
 type handler int
 
 func main() {
 	var handle handler
+
+	//Adicionam handlers a DefaultServerMux
+	
+	//Ao ser acessado localhost:8080, uma página html será inicializada.
 	http.HandleFunc("/", handle.init)
+	//Toda vez que o cliente enviar uma mensagem ao servidor, é estabelecida uma conexão entre eles.
 	http.HandleFunc("/echo/", handle.echo)
+
+
+	//Inicia o servidor com uma handler (nil = DefaultServerMux).
 	http.ListenAndServe(":8080", nil)
 }
+
+//	Equivalente a:
+//	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+//		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+//	})
 
 func (h handler) init(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Home page served...")
@@ -56,7 +71,8 @@ func writeConnection(con *websocket.Conn) {
 
 }
 func timer() {
-	timer := time.Tick(60 * time.Second)
+
+	timer := time.Tick(120 * time.Second)
 	for range timer {
 		return
 	}
