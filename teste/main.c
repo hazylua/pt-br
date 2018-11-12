@@ -1,15 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+typedef struct teste
+{
+    int num;
+    char *palavra;
+} Teste;
 
 int main()
 {
-    int num = 1;
-    int *p = &num;
-    int **pp = &p;
+    Teste *teste1 = (Teste *) malloc( sizeof( Teste ) );
 
-    printf( "num = %p"
-            "*p = %p"
-            "**p = %p", &num, &p, &pp
-    );
+    printf( "teste1: %p\n", &teste1 );
+    if( teste1->num == NULL )
+        printf( "sim\n" );
+    else
+        printf( "nao\n" );
 
     return 0;
 }
