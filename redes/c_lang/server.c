@@ -21,9 +21,21 @@ int main()
 
     bind( socket_welcome, (struct sockaddr *) &servidor_endereco, sizeof( servidor_endereco ) );
 
-    if( listen(socket_welcome, 5) == 0 )
-        printf( "Listening.\n" );
-    else
-        printf( "Erro.\n" );
-    
+    while( 1 )
+    {    
+        if( listen(socket_welcome, 5) == 0 )
+            printf( "Listening.\n" );
+        else
+            printf( "Erro.\n" );
+        
+        endereco_tam = sizeof( servidor_storage );
+        socket_new = accept( socket_welcome, (struct sockaddr *) &servidor_storage, &endereco_tam);
+
+        printf( "Mensagem: " );
+        scanf( "%s", buffer );
+        //strcpy( buffer,"Hello World\n" );
+        send( socket_new, buffer, 255, 0 );
+    }    
+    return 0;
+
 }
