@@ -155,3 +155,16 @@ int arvore_esvazia( No **arv )
     no_libera( *arv );
     *arv = NULL;
 }
+
+int busca_binaria( No *arv, int mat )
+{
+    if( arv == NULL )
+        return -1;
+    printf( "5sadsa\n");
+    if( arv->aluno.matricula > mat )
+        busca_binaria( arv->esq, mat );
+    else if( arv->aluno.matricula < mat )
+        busca_binaria( arv->dir, mat );
+    else if( arv->aluno.matricula == mat ) 
+        return 1;
+}
