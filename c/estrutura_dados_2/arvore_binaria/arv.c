@@ -115,7 +115,7 @@ int arvore_contarNaoFolhas( No *arv )
 int arvore_altura( No *arv )
 {
     if( arv == NULL )
-        return 0;
+        return -1;
     else
         return (1 + maior( arvore_altura( arv->esq ), arvore_altura( arv->dir ) ));
 }
