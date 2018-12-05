@@ -115,7 +115,7 @@ int arvore_contarNaoFolhas( No *arv )
 int arvore_altura( No *arv )
 {
     if( arv == NULL )
-        return 0;
+        return -1;
     else
         return (1 + maior( arvore_altura( arv->esq ), arvore_altura( arv->dir ) ));
 }
@@ -154,4 +154,17 @@ int arvore_esvazia( No **arv )
 
     no_libera( *arv );
     *arv = NULL;
+}
+
+int busca_binaria( No *arv, int mat )
+{
+    if( arv == NULL )
+        return -1;
+    printf( "5sadsa\n");
+    if( arv->aluno.matricula > mat )
+        busca_binaria( arv->esq, mat );
+    else if( arv->aluno.matricula < mat )
+        busca_binaria( arv->dir, mat );
+    else if( arv->aluno.matricula == mat ) 
+        return 1;
 }

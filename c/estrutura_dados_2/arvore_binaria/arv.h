@@ -38,4 +38,6 @@ int no_libera( No * );
 int arvore_destroi( No ** );
 int arvore_esvazia( No ** );
 
+int busca_binaria( No *, int );
+
 #endif
