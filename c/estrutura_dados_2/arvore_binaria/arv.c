@@ -178,35 +178,41 @@ No* arvore_maior_no(No **arv)
 
 int arvore_remove(No **arv, int mat)
 {
-    if((*arv)==NULL ){ // esta verificacao serve para caso o numero nao exista na arvore.
+    if( (*arv) == NULL ) // esta verificacao serve para caso o numero nao exista na arvore.
         return 0;
-    }
 
-    if((*arv)->aluno.matricula == mat){
-        if((*arv)->dir == NULL && (*arv)->esq == NULL){
-            free(*arv);
+    if( (*arv)->aluno.matricula == mat )
+    {
+        if( (*arv)->dir == NULL && (*arv)->esq == NULL )
+        {
+            free( *arv );
             (*arv) = NULL;
             return 1;
         }
-        if((*arv)->dir != NULL && (*arv)->esq !=NULL ){
-            No *aux = arvore_maior_no(&((*arv)->esq));
+        if( (*arv)->dir != NULL && (*arv)->esq !=NULL ){
+            No *aux = arvore_maior_no( &((*arv)->esq) );
             aux->dir = (*arv)->dir;
             aux->esq = (*arv)->esq;
             (*arv) = aux;
             aux = NULL;
             return 2;
         }
-        if((*arv)->dir==NULL){
+        if( (*arv)->dir == NULL )
+        {
             (*arv) = (*arv)->esq;
             return 3;
-        } else {
+        }
+        else
+        {
             (*arv) = (*arv)->dir;
             return 3;
         }
     }
 
-    else if((*arv)->aluno.matricula > mat) return arvore_remove(&((*arv)->esq), mat);
-    else return arvore_remove(&((*arv)->dir), mat);
+    else if( (*arv)->aluno.matricula > mat )
+        return arvore_remove( &((*arv)->esq), mat );
+    else
+        return arvore_remove( &((*arv)->dir), mat );
 }
 
 int verificaBST( No *arv, No *ant )
@@ -233,7 +239,8 @@ int verificaBST( No *arv, No *ant )
 //     return verificaBST( arv, ant );
 // }
 
-void arvore_espelhada( No *arv ){
+void arvore_espelhada( No *arv )
+{
     if( arv == NULL )
         return;
 
