@@ -38,6 +38,16 @@ int no_libera( No * );
 int arvore_destroi( No ** );
 int arvore_esvazia( No ** );
 
-int busca_binaria( No *, int );
+int busca_mat( No *, int );
+No *arvore_maior_no( No ** );
+
+int arvore_remove( No **, int );
+
+
+void arvore_espelhada( No * );
+int verificaBST( No *, No * );
+int verificaSimilar( No *, No * );
+int verificaIgual( No *, No * );
+int verificaSBST( No * );
 
 #endif

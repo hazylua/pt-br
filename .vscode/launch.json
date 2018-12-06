@@ -5,7 +5,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/exe.out",
+            "program": "${workspaceFolder}/c/estrutura_dados_2/arvore_binaria/exe.out",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

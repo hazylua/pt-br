@@ -4,4 +4,8 @@
     "editor.wordWrap": "on",
     "workbench.colorTheme": "Monokai",
     "editor.fontFamily": "Fira Mono, 'monospace'",
+    "files.associations": {
+        "iostream": "cpp",
+        "arv.h": "c"
+    },
 }
