@@ -172,7 +172,7 @@ No* arvore_maior_no(No **arv)
 {
     if( (*arv)->dir == NULL )
         return (*arv);
-
+    
     else arvore_maior_no(&((*arv)->dir));
 }
 

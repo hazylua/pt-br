@@ -43,7 +43,6 @@ No *arvore_maior_no( No ** );
 
 int arvore_remove( No **, int );
 
-
 void arvore_espelhada( No * );
 int verificaBST( No *, No * );
 int verificaSimilar( No *, No * );
