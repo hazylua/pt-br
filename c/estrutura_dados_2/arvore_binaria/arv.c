@@ -85,11 +85,10 @@ int arvore_vazia( No *arv )
 
 int arvore_contarNos( No *arv )
 {
-    if(arv==NULL) return 0;
-    else {
+    if( arv == NULL )
+        return 0;
+    else
         return 1 + arvore_contarNos(arv->esq) + arvore_contarNos(arv->dir );
-    }
-
 }
 
 int arvore_contarFolhas( No *arv )
@@ -178,7 +177,7 @@ No* arvore_maior_no(No **arv)
 
 int arvore_remove(No **arv, int mat)
 {
-    if( (*arv) == NULL ) // esta verificacao serve para caso o numero nao exista na arvore.
+    if( (*arv) == NULL ) // esta verificação serve para caso o número não exista na arvore.
         return 0;
 
     if( (*arv)->aluno.matricula == mat )
