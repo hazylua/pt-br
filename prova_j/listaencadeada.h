@@ -1,7 +1,6 @@
 #ifndef LISTAENCADEADA_H
 #define LISTAENCADEADA_H
 
-
 typedef struct dado{
     int matricula;
     char nome[40];

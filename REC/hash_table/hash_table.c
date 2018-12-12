@@ -1,7 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "hash_table.h"
 #include "lista_encadeada.h"
 
-Hash *hash_cria( int tam_tabela )
+typedef struct hash
+{
+    int qtd;
+    int TAM_TABELA;
+    Lista **itens;
+} Hash;
+
+Hash *hash_criar( int tam_tabela )
 {
     Hash *hash = (Hash *) malloc( sizeof( Hash) );
 
@@ -106,14 +117,32 @@ int hash_busca_nome( Hash *hash, Aluno *al, char *nome )
 int hash_busca_mat( Hash *hash, Aluno *al, int mat )
 {
     int index = hash_chave_dobra( mat, hash->TAM_TABELA );
-    int cond = lista_busca_nome( &(hash->itens[index]), al, mat );
+    int cond = lista_busca_mat( &(hash->itens[index]), al, mat );
     if( cond == 1 )
         return 1;
     
     return 0;
 }
 
-
+void hash_imprime( Hash *hash )
+{
+    int i;
+    for( i = 0 ; i < hash->TAM_TABELA ; i++ )
+    {
+        if( hash->itens[i] != NULL )
+        {
+            printf( "____________________\n" );
+            lista_imprime( &(hash->itens[i] ) );
+            printf( "____________________\n" );
+        }
+        else
+        {
+            printf( "____________________\n\n" );
+            printf( "%p\n", hash->itens[i] );
+            printf( "____________________\n" );
+        }
+    }
+}
 
 
 

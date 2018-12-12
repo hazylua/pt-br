@@ -1,15 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "lista_encadeada.h"
 
-/*
-    pLista é o ponteiro para uma lista.
-    *pLista é a lista em si.
-*/
-
-/*
-    return 1 <- Sucesso;
-    return 0 <- Falha;
-    return -1 <- Erro;
-*/
+typedef struct lista_elemento
+{
+    Aluno dados;
+    Lista *prox;
+} Lista;
 
 Lista **lista_criar()
 {
@@ -42,7 +40,7 @@ void lista_esvazia( Lista **lista )
         return;
 
     // ***
-    Lista *atual;
+    struct lista_elemento *atual;
     while( (*lista) != NULL )
     {
         atual = *lista;
@@ -51,19 +49,19 @@ void lista_esvazia( Lista **lista )
     }
 }
 
-int lista_insere_fim( Lista **lista, Aluno al )
+int lista_insere_fim( Lista **lista, Aluno *al )
 {
     if( lista == NULL )
         return -1;
 
     // ***
     Lista *atual, *novo;
-    novo = (Lista *) malloc( sizeof( Lista ) );
-    
+    novo = lista_criar();
+
     // Erro na alocação do nó.
     if( novo == NULL )
         return 0;
-    novo->dados = al;
+    novo->dados = *al;
     novo->prox = NULL;
 
     // Se a lista estiver vazia.
