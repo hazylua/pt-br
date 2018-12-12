@@ -20,7 +20,13 @@ Hash *hash_criar( int tam_tabela )
     {
         hash->TAM_TABELA = tam_tabela;
         hash->qtd = 0;
-        hash->itens = lista_criar();
+        // Aloca o vetor de listas encadeadas.
+        hash->itens = (Lista **) malloc( tam_tabela * sizeof( Lista *) );
+        if( hash->itens == NULL )
+        {
+            free( hash );
+            return NULL;
+        }
     }
 
     int i;
@@ -40,11 +46,9 @@ int hash_libera( Hash **hash )
 
     int i;
     // Libera as listas da tabela hash.
-    // ***
     for( i = 0 ; i < tam_tabela ; i++ )
         if( (*hash)->itens[i] != NULL )
             lista_libera( &((*hash)->itens[i]) );
-    // ???
     free( (*hash)->itens );
     free( *hash );
 
@@ -71,6 +75,7 @@ int hash_hashing( int chave, int tam_tabela )
 
 int hash_chave_mult( int chave, int tam_tabela )
 {
+    // Valor fixo.
     float A = 0.6180339887;
     float valor = chave * A;
     valor = valor - ((int) valor);

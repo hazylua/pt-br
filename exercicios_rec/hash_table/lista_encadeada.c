@@ -54,9 +54,8 @@ int lista_insere_fim( Lista **lista, Aluno *al )
     if( lista == NULL )
         return -1;
 
-    // ***
     Lista *atual, *novo;
-    novo = lista_criar();
+    novo = (Lista *) malloc( sizeof( Lista ) );
 
     // Erro na alocação do nó.
     if( novo == NULL )

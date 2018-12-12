@@ -6,7 +6,7 @@
 #include "hash_table.h"
 
 #define MAX_ALUNOS 10
-#define TAM_TABELA 51
+#define TAM_TABELA 10
 
 
 Aluno gerar_aluno( int );
@@ -17,15 +17,15 @@ int main()
     
     Hash *tabela_alunos = NULL;
     tabela_alunos = hash_criar( TAM_TABELA );
+    
+    int i;
+    for( i = 0 ; i < MAX_ALUNOS ; i++ )
+    {
+        Aluno aluno = gerar_aluno( i );
+        hash_insere_encadeamento( tabela_alunos, &aluno, 2 );
+    }
 
-    Aluno aluno;
-    snprintf( aluno.nome, 100, "Aluno %d", 1 );
-    aluno.matricula = rand()%99 + 100;
-    aluno.nota_1 = rand() % 10;
-    aluno.nota_2 = rand() % 10;
-    aluno.nota_3 = rand() % 10;
-
-    hash_insere_encadeamento( tabela_alunos, &aluno, 2 );
+    hash_imprime( tabela_alunos );
 
     return 0;
 }
