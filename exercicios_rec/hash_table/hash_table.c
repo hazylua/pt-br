@@ -39,9 +39,6 @@ Hash *hash_criar( int tam_tabela )
 
 int hash_libera( Hash **hash )
 {
-    if( hash == NULL )
-        return -1;
-
     int tam_tabela = (*hash)->TAM_TABELA;
 
     int i;
@@ -55,7 +52,6 @@ int hash_libera( Hash **hash )
     return 1;
 }
 
-// ???
 int valor_string( char *str )
 {
     int valor = 7;
@@ -63,14 +59,15 @@ int valor_string( char *str )
 
     int i;
     for( i = 0 ; i < tam ; i++ )
-        valor = 31 * tam + ((int) str[i]);
+        valor = (31 * tam) + ((int) str[i]);
 
     return valor;
 }
 
-int hash_hashing( int chave, int tam_tabela )
+
+int hash_chave_div( int chave, int tam_tabela )
 {
-    return hash_chave_mult( chave, tam_tabela );
+    return (chave & 0x7FFFFFFF) % tam_tabela;
 }
 
 int hash_chave_mult( int chave, int tam_tabela )
@@ -149,8 +146,45 @@ void hash_imprime( Hash *hash )
     }
 }
 
+// **************************************************
 
+int hash_hashing( int chave, int tam_tabela )
+{
+    return hash_chave_mult( chave, tam_tabela );
+}
 
+// int sondagem_linear( int pos, int i, int tam_tabela )
+// {
+//     pos = pos + i;
+//     return (pos & 0x7FFFFFFF) & tam_tabela;
+// }
 
+// i = tentativas de inserção. Se tentou inserir um elemento e houve colisão, i = 1, se houve colisão novamente, i = 2, e assim em diante.
+// int sondagem_quadratica( int pos, int i, int tam_tabela )
+// {
+//     pos = pos + (i * 2) + (i * i * 5);
+//     return (pos & 0x7FFFFFFF) & tam_tabela;
+// }
 
+// int insere_linear( Hash *hash, Aluno *al )
+// {
+//     if( hash == NULL || hash->qtd == hash->TAM_TABELA )
+//         return 0;
+    
+//     int chave = al->matricula;
+//     int nova_pos, pos = hash_chave_div( chave, hash->TAM_TABELA );
 
+//     int i;
+//     for( i = 0 ; i < hash->TAM_TABELA ; i++ )
+//     {
+//         nova_pos = sondagem_linear( pos, i, hash->TAM_TABELA );
+//         if( hash->itens[i] == NULL )
+//         {
+//             hash->itens[i] = al;
+//             hash->qtd++;
+//             return 1;
+//         }
+//     }
+// }
+
+ 

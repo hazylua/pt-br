@@ -36,10 +36,9 @@ int lista_libera( Lista **lista )
 void lista_esvazia( Lista **lista )
 {
     // Desnecessário?
-    if( lista == NULL )
-        return;
+    // if( lista == NULL )
+    //     return;
 
-    // ***
     struct lista_elemento *atual;
     while( (*lista) != NULL )
     {
@@ -85,7 +84,7 @@ int lista_busca_mat( Lista **lista, Aluno *al, int mat )
         return -1;
     
     Lista *no = *lista;
-    if( no != NULL && no->dados.matricula != mat )
+    while( no != NULL && no->dados.matricula != mat )
         no = no->prox;
 
     if( no == NULL )
@@ -101,7 +100,7 @@ int lista_busca_nome( Lista **lista, Aluno *al, char *nome )
         return -1;
     
     Lista *no = *lista;
-    if( no != NULL && strcmp( no->dados.nome, nome) != 0 )
+    while( no != NULL && strcmp( no->dados.nome, nome) != 0 )
         no = no->prox;
 
     if( no == NULL )
